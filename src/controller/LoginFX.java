@@ -57,7 +57,6 @@ public class LoginFX {
 			MessageBox msgBox = new MessageBox();
 			msgBox.message("Exception", e.getMessage());
 		}
-		
 	}
 	
 	@FXML
