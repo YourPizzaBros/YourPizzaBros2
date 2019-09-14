@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="424.0" prefWidth="557.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane prefHeight="424.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UsuarioFX">
    <children>
-      <Button fx:id="btnCliente" layoutX="181.0" layoutY="124.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="195.0" text="Cliente">
+      <Label fx:id="lblUsuario" layoutX="127.0" layoutY="146.0" text="Usuario: ">
          <font>
-            <Font name="Bell MT" size="36.0" />
+            <Font name="Baskerville Old Face" size="28.0" />
          </font>
-      </Button>
-      <Button fx:id="btnAdministrador" layoutX="181.0" layoutY="234.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="195.0" text="Administrador">
+      </Label>
+      <Label fx:id="lblClave" layoutX="127.0" layoutY="212.0" text="Clave:">
          <font>
-            <Font name="Bell MT" size="24.0" />
+            <Font name="Baskerville Old Face" size="28.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txtPclave" layoutX="230.0" layoutY="216.0" />
+      <TextField fx:id="txtFUsuario" layoutX="250.0" layoutY="150.0" />
+      <Button fx:id="btnOK" layoutX="411.0" layoutY="328.0" mnemonicParsing="false" onAction="#btnOK_Action" prefHeight="42.0" prefWidth="69.0" text="OK">
+         <font>
+            <Font name="Baskerville Old Face" size="17.0" />
          </font>
       </Button>
    </children>
