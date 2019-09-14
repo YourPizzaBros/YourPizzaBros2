@@ -14,12 +14,14 @@ public class FormsOperations {
 		try {
 			fXMLLoader = new FXMLLoader(getClass().getResource(url));
 			AnchorPane root = fXMLLoader.load();
+			root.setId("root");
 			Stage stage = new Stage();
             Scene scene = new Scene(root,root.getPrefWidth(),root.getPrefHeight());
             stage.resizableProperty().setValue(Boolean.FALSE);
 			stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle(title);
             stage.getIcons().add (new Image ("/image/pizzaIcon.png"));
+            //scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
            	stage.setScene(scene);
 			stage.show();
 		} catch(Exception e) {

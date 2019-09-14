@@ -30,7 +30,7 @@ public class TituloFX {
 	  private void btnSTART_Action() {
 	  
 	  FormsOperations formsOperations = new FormsOperations();
-	  formsOperations.OpenForm("Usuario","/view/UsuarioFX.fxml");
+	  formsOperations.OpenForm("Usuario","/view/LoginFX.fxml");
 	  
 	  
 	  }
