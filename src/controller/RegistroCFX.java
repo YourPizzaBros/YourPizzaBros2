@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -27,6 +28,9 @@ public class RegistroCFX {
 	private TextField txtNombreCliente;
 
 	
+	@FXML
+	private Button btnContinuar;
+	
 	
 	
 	
@@ -39,6 +43,7 @@ public class RegistroCFX {
 		this.connection = connection;
 	}
 	
+	
 	@FXML
 	private void btnRegistrarCliente_Action() {
 		PreparedStatement preparedStatement = null;
@@ -48,7 +53,7 @@ public class RegistroCFX {
 				preparedStatement.setString(1, txtNITCliente.getText());
 				preparedStatement.setString(2, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
-				//txtNIT.setText(txtNITCliente.getText());
+		    //  txtNIT.setText(txtNITCliente.getText());
 			//	txtNombre.setText(txtNombreCliente.getText());
 			//	tbpPanel.getSelectionModel().select(tabVenta);
 			} catch (SQLException e) {
@@ -156,5 +161,56 @@ public class RegistroCFX {
 		}
 		return nombre;
 	}
+	
+	
+	
+	@FXML
+	private void btnContinuar_Action() {
+		
+		
+		FormsOperations formsOperations = new FormsOperations();
+		
+		//ventaFX.loadCBXCategoria();     //esto estaba con producto
+		
+		//PreparedStatement preparedStatement = null;
+		//int rows = 0;
+		
+		
+		
+		String nombre = null;
+			if (!txtNITCliente.getText().isEmpty()) {
+			nombre = buscarNombre(txtNombreCliente.getText());
+			if (nombre != null) {
+				txtNITCliente.getText();
+			
+			
+			
+			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
+			
+			ElegirFX ElegirFX = fXMLLoader.getController();
+			ElegirFX.setConnection(connection);
+			
+			
+			
+			
+			} else {
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Información", "El número de NIT no se encuentra registrado");
+			}
+
+		} else {
+			MessageBox messageBox = new MessageBox();
+			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
+		}
+			
+			
+			
+			
+			
+			
+}
+	
+	
+	
 	
 }

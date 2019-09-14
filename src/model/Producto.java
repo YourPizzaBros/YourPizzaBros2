@@ -5,13 +5,14 @@ public class Producto {
 	private String nombre;
 	private Double precio;
 	private String descripción;
-	private int códigoCategoría;
-	public Producto(int códigoProducto, String nombre, Double precio, String descripción, int códigoCategoría) {
+	private String tamano;
+	
+	public Producto (int códigoProducto, String nombre, Double precio, String descripción, String tamano) {
 		this.códigoProducto = códigoProducto;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.descripción = descripción;
-		this.códigoCategoría = códigoCategoría;
+		this.tamano= tamano;
 	}
 	public int getCódigoProducto() {
 		return códigoProducto;
@@ -37,16 +38,17 @@ public class Producto {
 	public void setDescripción(String descripción) {
 		this.descripción = descripción;
 	}
-	public int getCódigoCategoría() {
-		return códigoCategoría;
+	
+	public String getTamano() {
+		return tamano;
 	}
-	public void setCódigoCategoría(int códigoCategoría) {
-		this.códigoCategoría = códigoCategoría;
+	public void setTamano(String tamano) {
+		this.tamano = tamano;
 	}
 	@Override
 	public String toString() {
 		return "Producto [códigoProducto=" + códigoProducto + ", nombre=" + nombre + ", precio=" + precio
-				+ ", descripción=" + descripción + ", códigoCategoría=" + códigoCategoría + "]";
+				+ ", descripción=" + descripción +  ", tamaño =" + tamano + "]";
 	}
 	
 	

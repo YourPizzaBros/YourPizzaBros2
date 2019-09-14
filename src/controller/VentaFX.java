@@ -62,6 +62,9 @@ public class VentaFX {
 		/*
 		 * Se define que tipo de datos guardará cada columna
 		 */
+		
+		
+		//txtNombre.setText(nombre);
 		tbcProducto.setCellValueFactory(new PropertyValueFactory<>("productoCBX"));
 		tbcCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 	}
@@ -86,9 +89,7 @@ public class VentaFX {
 
 	@FXML
 	private void btnAñadirProducto_Action() {
-		/*
-		 * Se añaden los items que se encuentran en cbxProducto y en el txtCantidad
-		 */
+		
 		if (cbxProducto.getValue() != null && !txtCantidad.getText().isEmpty()) { // Se verifica si ambos no estan
 																					// vacios
 			DetalleTBV detalleTBV = new DetalleTBV(cbxProducto.getValue(), Integer.parseInt(txtCantidad.getText()));
@@ -140,13 +141,13 @@ public class VentaFX {
 
 				númeroVenta = guardarVenta(convertToDate(dtpFecha.getValue()), txtNIT.getText());
 
-				// Recorremos todos los elementos del objeto TableView
+				
 				for (DetalleTBV detalleTBV : tbvDetalle.getItems()) {
 
 					guardarDetalleVenta(númeroVenta, detalleTBV.getProductoCBX().getCódigoProducto(),
 							detalleTBV.getCantidad());
 				}
-				cleanScreen(); // Limpiamos la pantalla
+				cleanScreen(); 
 			}
 		} else {
 			MessageBox messageBox = new MessageBox();
@@ -176,8 +177,7 @@ public class VentaFX {
 
 		try {
 
-			// Utilizamos el método queryGeneratedKeys para que nos devuelva la clava
-			// generada
+			
 			preparedStatement = connection.queryGeneratedKeys("insert into Venta(fecha, nit) " + "values(?,?)");
 			// Convertimos la fecha de java.util en java.sql para guardarla
 			preparedStatement.setDate(1, new java.sql.Date(fecha.getTime()));
@@ -228,9 +228,9 @@ public class VentaFX {
 			 * Se carga el comboBox con Producto
 			 */
 			while (resultSet.next()) {
-				productoCBX = new ProductoCBX(resultSet.getInt("códigoProducto"), resultSet.getString("nombre"),
+				productoCBX = new ProductoCBX(resultSet.getInt("codigoProducto"), resultSet.getString("nombre"),
 						resultSet.getDouble("precio"), resultSet.getString("descripción"),
-						resultSet.getInt("códigoCategoría"));
+						resultSet.getString("tamano"));
 				cbxProducto.getItems().add(productoCBX);
 			}
 
@@ -239,6 +239,28 @@ public class VentaFX {
 			messageBox.message("Error", e.getMessage());
 		}
 	}
+	
+	
+	
+	
+	/*private boolean buscarNombre(String NIT) {
+		String nombre = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			preparedStatement = connection.query("select nombre from cliente " + "where nit = ?");
+			preparedStatement.setString(1, NIT);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				nombre = resultSet.getString("nombre");
+			}
+		} catch (SQLException e) {
+			MessageBox messageBox = new MessageBox();
+			messageBox.message("Error Cliente", e.getMessage());
+		}
+		return nombre;
+	}*/
 
 	public void now() {
 
@@ -256,14 +278,16 @@ public class VentaFX {
 
 	class ProductoCBX extends model.Producto {
 
-		public ProductoCBX(int códigoProducto, String nombre, Double precio, String descripción, int códigoCategoría) {
-			super(códigoProducto, nombre, precio, descripción, códigoCategoría);
+		public ProductoCBX(int códigoProducto, String nombre, Double precio, String descripcion, String tamano) {
+			super(códigoProducto, nombre, precio, descripcion, tamano);
 		}
 
 		@Override
 		public String toString() {
-			return getNombre();
+			return " "+ getNombre() + " .Tamaño : " + getTamano() ;
 		}
+		
+		
 	}
 
 	public class DetalleTBV {
@@ -292,12 +316,7 @@ public class VentaFX {
 		}
 	}
 
-	/***********************************************************
-	 * 
-	 * Métodos de pestaña de Cliente
-	 * 
-	 * *********************************************************
-	 */
+	
 
 
 
