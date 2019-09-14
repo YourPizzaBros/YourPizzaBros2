@@ -4,14 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ElegirFX">
    <children>
-      <Button fx:id="btnCuenta" layoutX="230.0" layoutY="258.0" mnemonicParsing="false" onAction="#btnCuenta_Action" text="Cuenta">
+      <Button fx:id="btnCuenta" layoutX="229.0" layoutY="100.0" mnemonicParsing="false" text="Cuenta">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="btnPedido" layoutX="231.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnPedido_Action" text="Pedido">
+      <Button fx:id="btnPedido" layoutX="230.0" layoutY="200.0" mnemonicParsing="false" text="Pedido">
          <font>
             <Font size="25.0" />
          </font>
