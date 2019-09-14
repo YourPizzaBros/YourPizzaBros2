@@ -4,20 +4,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdmiFX">
    <children>
-      <Button fx:id="btnComprar" layoutX="155.0" layoutY="173.0" mnemonicParsing="false" text="Comprar Productos">
+      <Button fx:id="btnComprar" layoutX="155.0" layoutY="173.0" mnemonicParsing="false" onAction="#btnComprar_Action" text="Comprar Productos">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="btnVerificar" layoutX="153.0" layoutY="99.0" mnemonicParsing="false" text="Verificar Productos">
+      <Button fx:id="btnVerificar" layoutX="153.0" layoutY="99.0" mnemonicParsing="false" onAction="#btnVerificar_Action" text="Verificar Productos">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="btnRegistrar" layoutX="153.0" layoutY="250.0" mnemonicParsing="false" text="Registrar Proveedor">
+      <Button fx:id="btnRegistrar" layoutX="153.0" layoutY="250.0" mnemonicParsing="false" onAction="#btnRegistrar_Action" text="Registrar Proveedor">
          <font>
             <Font size="25.0" />
          </font>

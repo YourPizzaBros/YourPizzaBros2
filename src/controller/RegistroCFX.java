@@ -1,5 +1,6 @@
 package controller;
 
+//<<<<<<< HEAD
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,16 +32,15 @@ public class RegistroCFX {
 	@FXML
 	private Button btnContinuar;
 	
-	
-	
-	
-	
+
+
 	public Connection getConnection() {
 		return connection;
 	}
 
 	public void setConnection(Connection connection) {
 		this.connection = connection;
+
 	}
 	
 	
@@ -208,9 +208,14 @@ public class RegistroCFX {
 			
 			
 			
-}
+
+}	
 	
 	
 	
-	
-}
+
+
+	}
+
+
+
