@@ -3,6 +3,7 @@ package controller;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Connection {
 
@@ -20,6 +21,12 @@ public class Connection {
 	public PreparedStatement query(String sql) throws SQLException {
 		return connection.prepareStatement(sql);
 	}
+	
+	public PreparedStatement queryGeneratedKeys(String sql) throws SQLException {
+		return connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+	}
+	
+	
 
 	public void close() throws SQLException {
 		if (connection != null) {
