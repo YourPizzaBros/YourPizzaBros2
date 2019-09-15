@@ -2,16 +2,7 @@ package controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import javafx.scene.image.Image;
-=======
->>>>>>> Andy
-=======
-
-import javafx.scene.image.Image;
-
->>>>>>> Andy
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,35 +14,15 @@ public class FormsOperations {
 		try {
 			fXMLLoader = new FXMLLoader(getClass().getResource(url));
 			AnchorPane root = fXMLLoader.load();
-<<<<<<< HEAD
-<<<<<<< HEAD
-			root.setId("root");
-=======
->>>>>>> Andy
-=======
+	        root.setId("root");
 
-
-			root.setId("root");
-
->>>>>>> Andy
 			Stage stage = new Stage();
             Scene scene = new Scene(root,root.getPrefWidth(),root.getPrefHeight());
             stage.resizableProperty().setValue(Boolean.FALSE);
 			stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle(title);
-<<<<<<< HEAD
-<<<<<<< HEAD
-            stage.getIcons().add (new Image ("/image/pizzaIcon.png"));
-            //scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
-=======
->>>>>>> Andy
-=======
-
 
             stage.getIcons().add (new Image ("/image/pizzaIcon.png"));
-            //scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
-
->>>>>>> Andy
            	stage.setScene(scene);
 			stage.show();
 		} catch(Exception e) {

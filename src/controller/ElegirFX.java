@@ -78,12 +78,13 @@ public class ElegirFX {
 	@FXML
 	private void btnCuenta_Action() {
 		
-		/*
+		
 		FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Formulario Pagar" , "/view/PagarFX.fxml");
 		PagarFX pagarFX = fXMLLoader.getController();
-		pagarFX.setConnection(connection);
-		pagarFX.loadCBXCategoria();*/  //aqui tiene que venir con pagar
+		//pagarFX.setConnection(connection);
+		
+		 //aqui tiene que venir con pagar
 	}
 	
 }

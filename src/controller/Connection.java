@@ -3,16 +3,9 @@ package controller;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import java.sql.Statement;
->>>>>>> Andy
-=======
 
 import java.sql.Statement;
 
->>>>>>> Andy
 
 public class Connection {
 
@@ -30,23 +23,14 @@ public class Connection {
 	public PreparedStatement query(String sql) throws SQLException {
 		return connection.prepareStatement(sql);
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 
->>>>>>> Andy
 	
 	public PreparedStatement queryGeneratedKeys(String sql) throws SQLException {
 		return connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 	}
 	
 	
-<<<<<<< HEAD
->>>>>>> Andy
-=======
 
->>>>>>> Andy
 
 	public void close() throws SQLException {
 		if (connection != null) {

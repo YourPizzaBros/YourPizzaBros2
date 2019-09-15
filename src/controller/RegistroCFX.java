@@ -1,22 +1,11 @@
 package controller;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-
-public class RegistroCFX {
-	private Connection connection;
-
-=======
-=======
-//<<<<<<< HEAD
->>>>>>> Andy
+//import javafx.scene.control.Label;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -38,35 +27,41 @@ public class RegistroCFX {
 	private TextField txtNITCliente;
 	@FXML
 	private TextField txtNombreCliente;
+	
+	private String nombreCliente;
+	private String NITCliente;
+	
 
 	
+	public String getNombreCliente() {
+		return nombreCliente;
+	}
+
+	public void setNombreCliente(String nombreCliente) {
+		this.nombreCliente = nombreCliente;
+	}
+
+	public String getNITCliente() {
+		return NITCliente;
+	}
+
+	public void setNITCliente(String nITCliente) {
+		NITCliente = nITCliente;
+	}
+
+
+
 	@FXML
 	private Button btnContinuar;
 	
-<<<<<<< HEAD
-	
-	
-	
->>>>>>> Andy
-=======
 
-
->>>>>>> Andy
 	public Connection getConnection() {
 		return connection;
 	}
 
 	public void setConnection(Connection connection) {
 		this.connection = connection;
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-	}
-
-=======
-=======
-
->>>>>>> Andy
 	}
 	
 	
@@ -79,7 +74,9 @@ public class RegistroCFX {
 				preparedStatement.setString(1, txtNITCliente.getText());
 				preparedStatement.setString(2, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
-		    //  txtNIT.setText(txtNITCliente.getText());
+				setNombreCliente(txtNombreCliente.getText());
+				setNITCliente(txtNITCliente.getText());
+				//  txtNIT.setText(txtNITCliente.getText());
 			//	txtNombre.setText(txtNombreCliente.getText());
 			//	tbpPanel.getSelectionModel().select(tabVenta);
 			} catch (SQLException e) {
@@ -187,11 +184,7 @@ public class RegistroCFX {
 		}
 		return nombre;
 	}
-	
-<<<<<<< HEAD
->>>>>>> Andy
-}
-=======
+
 	
 	
 	@FXML
@@ -212,7 +205,8 @@ public class RegistroCFX {
 			nombre = buscarNombre(txtNombreCliente.getText());
 			if (nombre != null) {
 				txtNITCliente.getText();
-			
+				setNombreCliente(txtNombreCliente.getText());
+				setNITCliente(txtNITCliente.getText());
 			
 			
 			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
@@ -240,13 +234,4 @@ public class RegistroCFX {
 			
 
 }	
-	
-	
-	
-
-
-	}
-
-
-
->>>>>>> Andy
+}	
