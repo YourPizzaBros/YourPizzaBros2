@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="tbpPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="715.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompraFX">
+  <tabs>
+    <Tab fx:id="tabVenta" text="Venta">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="405.0" prefWidth="715.0">
+               <children>
+                  <Label layoutX="73.0" layoutY="103.0" prefHeight="17.0" prefWidth="47.0" text="Fecha:" />
+                  <DatePicker fx:id="dtpFecha" layoutX="141.0" layoutY="99.0" />
+                  <TableView fx:id="tbvDetalle" layoutX="385.0" layoutY="64.0" prefHeight="319.0" prefWidth="315.0">
+                    <columns>
+                      <TableColumn fx:id="tbcInsumo" prefWidth="177.0" text="Insumo" />
+                      <TableColumn fx:id="tbcCantidad" minWidth="0.0" prefWidth="82.0" text="Cantidad" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="291.0" prefHeight="53.0" prefWidth="144.0" text="Compra" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="47.0" layoutY="173.0" prefHeight="21.0" prefWidth="81.0" text="Insumo :" />
+                  <ComboBox fx:id="cbxInsumo" layoutX="155.0" layoutY="168.0" prefWidth="150.0" />
+                  <TextField fx:id="txtCantidad" layoutX="166.0" layoutY="233.0" prefHeight="25.0" prefWidth="43.0" />
+                  <Label layoutX="54.0" layoutY="238.0" prefHeight="21.0" prefWidth="77.0" text="Cantidad :" />
+                  <Button fx:id="btnAñadirInsumo" layoutX="62.0" layoutY="413.0" mnemonicParsing="false" onAction="#btnAñadirInsumo_Action" prefHeight="27.0" prefWidth="117.0" text="Añadir Insumo" />
+                  <Button fx:id="btnRemoverInsumo" layoutX="473.0" layoutY="413.0" mnemonicParsing="false" onAction="#btnRemoverInsumo_Action" prefHeight="31.0" prefWidth="144.0" text="Remover Insumo" />
+                  <Button fx:id="btnComprar" layoutX="174.0" layoutY="513.0" mnemonicParsing="false" onAction="#btnComprar_Action" prefHeight="37.0" prefWidth="153.0" text="Comprar" />
+                  <Button fx:id="btnCancelarCompra" layoutX="405.0" layoutY="513.0" mnemonicParsing="false" onAction="#btnCancelarCompra_Action" prefHeight="37.0" prefWidth="153.0" text="Cancelar Compra" />
+                  <Button fx:id="btnEditarInsumo" layoutX="288.0" layoutY="413.0" mnemonicParsing="false" onAction="#btnEditarInsumo_Action" prefHeight="27.0" prefWidth="117.0" text="Editar Insumo" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab fx:id="tabCliente" text="Menu">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="776.0" prefWidth="715.0">
+               <children>
+                  <Label layoutX="181.0" layoutY="153.0" />
+                  <ImageView fitHeight="640.0" fitWidth="665.0" layoutX="32.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+               </children></AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

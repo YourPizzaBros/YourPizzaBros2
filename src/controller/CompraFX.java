@@ -18,34 +18,35 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class VentaFX {
+public class CompraFX {
 	private Connection connection;
 	@FXML
 	private DatePicker dtpFecha;
-	@FXML
-	private TextField txtNIT;
+	/*@FXML
+	private TextField txtNIT;*/
+	
 	@FXML
 	private TextField txtNombre;
 	@FXML
-	private ComboBox<ProductoCBX> cbxProducto;
+	private ComboBox<InsumoCBX> cbxInsumo;
 	@FXML
 	private TableView<DetalleTBV> tbvDetalle;
 	@FXML
-	private TableColumn<DetalleTBV, String> tbcProducto;
+	private TableColumn<DetalleTBV, String> tbcInsumo;
 	@FXML
 	private TableColumn<DetalleTBV, String> tbcCantidad;
 	@FXML
 	private TextField txtCantidad;
 	@FXML
-	private Button btnAñadirProducto;
+	private Button btnAñadirInsumo;
 	@FXML
-	private Button btnEditarProducto;
+	private Button btnEditarInsumo;
 	@FXML
-	private Button btnRemoverProducto;
+	private Button btnRemoverInsumo;
 	@FXML
-	private Button btnGuardarVenta;
+	private Button btnComprar;
 	@FXML
-	private Button btnCancelarVenta;
+	private Button btnCancelarCompra;
 	@FXML
 	private TabPane tbpPanel;
 	
@@ -65,7 +66,7 @@ public class VentaFX {
 		
 		
 		//txtNombre.setText(nombre);
-		tbcProducto.setCellValueFactory(new PropertyValueFactory<>("productoCBX"));
+		tbcInsumo.setCellValueFactory(new PropertyValueFactory<>("insumoCBX"));
 		tbcCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 	}
 
@@ -90,14 +91,14 @@ public class VentaFX {
 	@FXML
 	private void btnAñadirProducto_Action() {
 		
-		if (cbxProducto.getValue() != null && !txtCantidad.getText().isEmpty()) { // Se verifica si ambos no estan
+		if (cbxInsumo.getValue() != null && !txtCantidad.getText().isEmpty()) { // Se verifica si ambos no estan
 																					// vacios
-			DetalleTBV detalleTBV = new DetalleTBV(cbxProducto.getValue(), Integer.parseInt(txtCantidad.getText()));
+			DetalleTBV detalleTBV = new DetalleTBV(cbxInsumo.getValue(), Integer.parseInt(txtCantidad.getText()));
 			if (!buscarDetalle(detalleTBV)) {
 				// Añade el objeto detalleTBV en la tabla
 				tbvDetalle.getItems().add(detalleTBV);
 				// Despues de añadir, ambos cambian a estado vacio
-				cbxProducto.setValue(null);
+				cbxInsumo.setValue(null);
 				txtCantidad.setText("");
 			}else {
 				MessageBox messageBox = new MessageBox();
@@ -110,7 +111,7 @@ public class VentaFX {
 	private boolean buscarDetalle(DetalleTBV detalleTBV) {
 		boolean resp = false;
 		for (DetalleTBV item : tbvDetalle.getItems()) {
-			if (item.getProductoCBX().equals(detalleTBV.getProductoCBX())) {
+			if (item.getInsumoCBX().equals(detalleTBV.getInsumoCBX())) {
 				resp = true;
 				break;
 			}
@@ -121,7 +122,7 @@ public class VentaFX {
 	@FXML
 	private void btnEditarProducto_Action() {
 		DetalleTBV selectedItem = tbvDetalle.getSelectionModel().getSelectedItem();
-		cbxProducto.setValue(selectedItem.getProductoCBX());
+		cbxInsumo.setValue(selectedItem.getInsumoCBX());
 		txtCantidad.setText(selectedItem.getCantidad().toString());
 		tbvDetalle.getItems().remove(selectedItem);
 	}
@@ -136,15 +137,15 @@ public class VentaFX {
 	private void btnGuardarVenta_Action() {
 		int númeroVenta = 0;
 
-		if (dtpFecha.getValue() != null && !txtNIT.getText().isEmpty() && !txtNombre.getText().isEmpty()) {
+		if (dtpFecha.getValue() != null /*&& !txtNIT.getText().isEmpty() */&& !txtNombre.getText().isEmpty()) {
 			if (tbvDetalle.getItems().size() > 0) {
 
-				númeroVenta = guardarVenta(convertToDate(dtpFecha.getValue()), txtNIT.getText());
+				númeroVenta = guardarVenta(convertToDate(dtpFecha.getValue()), txtNombre.getText());
 
 				
 				for (DetalleTBV detalleTBV : tbvDetalle.getItems()) {
 
-					guardarDetalleVenta(númeroVenta, detalleTBV.getProductoCBX().getCodigoProducto(),
+					guardarDetalleVenta(númeroVenta, detalleTBV.getInsumoCBX().getCodigoInsumo(),
 							detalleTBV.getCantidad());
 				}
 				cleanScreen(); 
@@ -157,7 +158,7 @@ public class VentaFX {
 	}
 
 	@FXML
-	private void btnCancelarVenta_Action() {
+	private void btnCancelarCompra_Action() {
 		cleanScreen(); // Limpiamos la pantalla
 	}
 
@@ -170,7 +171,7 @@ public class VentaFX {
 		return Date.from(localDate.atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
 	}
 
-	private int guardarVenta(Date fecha, String NIT) {
+	private int guardarVenta(Date fecha, String nombre) {
 		ResultSet resultSet = null;
 		PreparedStatement preparedStatement = null;
 		int aiKey = 0;
@@ -178,10 +179,10 @@ public class VentaFX {
 		try {
 
 			
-			preparedStatement = connection.queryGeneratedKeys("insert into Venta(fecha, nit) " + "values(?,?)");
+			preparedStatement = connection.queryGeneratedKeys("insert into Compra(fecha, nombre) " + "values(?,?)");
 			// Convertimos la fecha de java.util en java.sql para guardarla
 			preparedStatement.setDate(1, new java.sql.Date(fecha.getTime()));
-			preparedStatement.setString(2, txtNIT.getText());
+			preparedStatement.setString(2, txtNombre.getText());
 			preparedStatement.executeUpdate();
 			resultSet = preparedStatement.getGeneratedKeys();
 			if (resultSet.next()) {
@@ -194,14 +195,14 @@ public class VentaFX {
 		return aiKey;
 	}
 
-	private void guardarDetalleVenta(int número, int códigoProducto, int cantidad) {
+	private void guardarDetalleVenta(int numero, int codigoInsumo, int cantidad) {
 		PreparedStatement preparedStatement = null;
 
 		try {
 			preparedStatement = connection
-					.query("insert into detalleventa(número, códigoProducto, cantidad) " + "values(?,?,?)");
-			preparedStatement.setInt(1, número);
-			preparedStatement.setInt(2, códigoProducto);
+					.query("insert into detalleventa(numero, codigoInsumo, cantidad) " + "values(?,?,?)");
+			preparedStatement.setInt(1, numero);
+			preparedStatement.setInt(2, codigoInsumo);
 			preparedStatement.setInt(3, cantidad);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -218,20 +219,20 @@ public class VentaFX {
 		this.connection = connection;
 	}
 
-	public void loadcbxProducto() {
+	public void loadcbxInsumo() {
 		try {
 			PreparedStatement preparedStatement = connection.query("Select * from producto");
 			ResultSet resultSet = preparedStatement.executeQuery();
-			ProductoCBX productoCBX = null;
+			InsumoCBX insumoCBX = null;
 
 			/*
 			 * Se carga el comboBox con Producto
 			 */
 			while (resultSet.next()) {
-				productoCBX = new ProductoCBX(resultSet.getInt("codigoProducto"), resultSet.getString("nombre"),
-						resultSet.getDouble("precio"), resultSet.getString("descripción"),
+				insumoCBX = new InsumoCBX(resultSet.getInt("codigoInsumo"), resultSet.getString("nombre"),
+						resultSet.getDouble("precio"), resultSet.getString("descripcion"),
 						resultSet.getString("tamano"));
-				cbxProducto.getItems().add(productoCBX);
+				cbxInsumo.getItems().add(insumoCBX);
 			}
 
 		} catch (SQLException e) {
@@ -243,7 +244,7 @@ public class VentaFX {
 	
 	
 	
-	private String buscarNombre(String NIT) {
+	/*private boolean buscarNombre(String NIT) {
 		String nombre = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -260,7 +261,7 @@ public class VentaFX {
 			messageBox.message("Error Cliente", e.getMessage());
 		}
 		return nombre;
-	}
+	}*/
 
 	public void now() {
 
@@ -269,16 +270,16 @@ public class VentaFX {
 
 	private void cleanScreen() {
 		now();
-		txtNIT.setText("");
+	
 		txtNombre.setText("");
-		cbxProducto.setValue(null);
+		cbxInsumo.setValue(null);
 		txtCantidad.setText("");
 		tbvDetalle.getItems().clear();
 	}
 
-	class ProductoCBX extends model.Producto {
+	class InsumoCBX extends model.Insumo {
 
-		public ProductoCBX(int códigoProducto, String nombre, Double precio, String descripcion, String tamano) {
+		public InsumoCBX(int códigoProducto, String nombre, Double precio, String descripcion, String tamano) {
 			super(códigoProducto, nombre, precio, descripcion, tamano);
 		}
 
@@ -291,20 +292,20 @@ public class VentaFX {
 	}
 
 	public class DetalleTBV {
-		private ProductoCBX productoCBX;
+		private InsumoCBX insumoCBX;
 		private Integer cantidad;
 
-		public DetalleTBV(ProductoCBX productoCBX, Integer cantidad) {
-			this.productoCBX = productoCBX;
+		public DetalleTBV(InsumoCBX insumoCBX, Integer cantidad) {
+			this.insumoCBX = insumoCBX;
 			this.cantidad = cantidad;
 		}
 
-		public ProductoCBX getProductoCBX() {
-			return productoCBX;
+		public InsumoCBX getInsumoCBX() {
+			return insumoCBX;
 		}
 
-		public void setProductoCBX(ProductoCBX productoCBX) {
-			this.productoCBX = productoCBX;
+		public void setInsumoCBX(InsumoCBX insumoCBX) {
+			this.insumoCBX = insumoCBX;
 		}
 
 		public Integer getCantidad() {

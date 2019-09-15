@@ -1,11 +1,11 @@
 package controller;
 
-import java.sql.SQLException;
+
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.cell.PropertyValueFactory;
+
 
 public class ElegirFX {
 
@@ -65,12 +65,12 @@ public class ElegirFX {
 	@FXML
 	private void btnPedido_Action() {
 		
-		
+		System.out.println("apreto boton pedido");
 		FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Formulario Venta" , "/view/VentaFX.fxml");
-		
+		FXMLLoader fXMLLoader = formsOperations.OpenFormTab ("Formulario Venta" , "/view/VentaFX.fxml");
+		System.out.println("entro a ventea");
 		VentaFX ventaFX = fXMLLoader.getController();
-		
+		System.out.println("todo ok");
 		ventaFX.setConnection(connection);
 		ventaFX.loadcbxProducto();     //esto estaba con producto
 	}

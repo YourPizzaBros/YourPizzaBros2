@@ -40,18 +40,18 @@ public class AdmiFX {
 	private void btnComprar_Action() 
 	{
 		FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Comprar Producto" , "/view/ComprarFX.fxml");
-		ComprarFX comprarFX = fXMLLoader.getController();
-		comprarFX.setConnection(connection);
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Comprar Producto" , "/view/CompraFX.fxml");
+		CompraFX compraFX = fXMLLoader.getController();
+		compraFX.setConnection(connection);
 		
 	}
 	@FXML
 	private void btnRegistrar_Action() 
 	{
 		FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Proveedores" , "/view/RegistroFX.fxml");
-		RegistroFX RegistroFX = fXMLLoader.getController();
-		RegistroFX.setConnection(connection);
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Proveedores" , "/view/RegistroPFX.fxml");
+		RegistroPFX RegistroPFX = fXMLLoader.getController();
+		RegistroPFX.setConnection(connection);
 		
 	}
 	

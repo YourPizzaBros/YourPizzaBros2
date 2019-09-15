@@ -14,14 +14,14 @@
          </font>
       </Label>
       <Label layoutX="229.0" layoutY="230.0" text="NIT :" />
-      <TextField fx:id="txtNITCliente" layoutX="354.0" layoutY="225.0" prefHeight="25.0" prefWidth="219.0" />
+      <TextField fx:id="txtNITCliente" layoutX="354.0" layoutY="225.0" prefHeight="25.0" prefWidth="219.0" text="12345" />
       <Label layoutX="213.0" layoutY="288.0" text="Nombre :" />
       <TextField fx:id="txtNombreCliente" layoutX="355.0" layoutY="283.0" prefHeight="25.0" prefWidth="218.0" />
       <Button fx:id="btnRegistrarCliente" layoutX="260.0" layoutY="390.0" mnemonicParsing="false" onAction="#btnRegistrarCliente_Action" prefHeight="46.0" prefWidth="124.0" text="Registrar" />
       <Button fx:id="btnCancelarCliente" layoutX="478.0" layoutY="390.0" mnemonicParsing="false" onAction="#btnCancelarCliente_Action" prefHeight="46.0" prefWidth="124.0" text="Cancelar" />
       <Button fx:id="btnBuscarCliente" layoutX="121.0" layoutY="500.0" mnemonicParsing="false" onAction="#btnBuscarCliente_Action" prefHeight="46.0" prefWidth="124.0" text="Buscar" />
       <Button fx:id="btnActualizarCliente" layoutX="373.0" layoutY="508.0" mnemonicParsing="false" onAction="#btnActualizarCliente_Action" prefHeight="46.0" prefWidth="124.0" text="Actualizar" />
-      <Button fx:id="btnEliminarCliente" layoutX="610.0" layoutY="508.0" mnemonicParsing="false" onAction="#btnEliminarCliente_Action" prefHeight="46.0" prefWidth="124.0" text="Eliminar" />
+      <Button fx:id="btnEliminarCliente" layoutX="626.0" layoutY="508.0" mnemonicParsing="false" onAction="#btnEliminarCliente_Action" prefHeight="46.0" prefWidth="124.0" text="Eliminar" />
       <Button fx:id="btnContinuar" layoutX="366.0" layoutY="628.0" mnemonicParsing="false" onAction="#btnContinuar_Action" prefHeight="53.0" prefWidth="137.0" text="Continuar" />
    </children>
 </AnchorPane>

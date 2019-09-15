@@ -13,7 +13,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			//AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/view/TituloFX.fxml"));
+			
 			FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/view/TituloFX.fxml"));
 			AnchorPane root = fXMLLoader.load();
 			//ScreenFX screenFX = fXMLLoader.getController();

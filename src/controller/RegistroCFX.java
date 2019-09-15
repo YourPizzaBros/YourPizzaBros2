@@ -1,8 +1,11 @@
 package controller;
 
 
+<<<<<<< HEAD
 import javafx.fxml.FXML;
 //import javafx.scene.control.Label;
+=======
+>>>>>>> Andy
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,6 +35,7 @@ public class RegistroCFX {
 	private String NITCliente;
 	
 
+	private String apellido;
 	
 	public String getNombreCliente() {
 		return nombreCliente;
@@ -70,7 +74,7 @@ public class RegistroCFX {
 		PreparedStatement preparedStatement = null;
 		if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("insert into cliente(nit, nombre) values(?,?)");
+				preparedStatement = connection.query("insert into cliente(nit, ApellidoC) values(?,?)");
 				preparedStatement.setString(1, txtNITCliente.getText());
 				preparedStatement.setString(2, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
@@ -122,7 +126,7 @@ public class RegistroCFX {
 		PreparedStatement preparedStatement = null;
 		if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("update cliente set nombre = ? where nit = ?");
+				preparedStatement = connection.query("update cliente set ApellidoC = ? where nit = ?");
 				preparedStatement.setString(2, txtNITCliente.getText());
 				preparedStatement.setString(1, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
@@ -165,28 +169,33 @@ public class RegistroCFX {
 	}
 	
 	
-	
 	private String buscarNombre(String NIT) {
-		String nombre = null;
+		 apellido = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
 		try {
-			preparedStatement = connection.query("select nombre from cliente " + "where nit = ?");
+			preparedStatement = connection.query("select ApellidoC from cliente " + "where nit = ?");
 			preparedStatement.setString(1, NIT);
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				nombre = resultSet.getString("nombre");
+				apellido = resultSet.getString("ApellidoC");
 			}
 		} catch (SQLException e) {
 			MessageBox messageBox = new MessageBox();
 			messageBox.message("Error Cliente", e.getMessage());
 		}
-		return nombre;
+		return apellido;
 	}
+<<<<<<< HEAD
 
 	
 	
+=======
+	 //tipo esto da pero ya no
+	
+	/*
+>>>>>>> Andy
 	@FXML
 	private void btnContinuar_Action() {
 		
@@ -200,13 +209,22 @@ public class RegistroCFX {
 		
 		
 		
-		String nombre = null;
-			if (!txtNITCliente.getText().isEmpty()) {
-			nombre = buscarNombre(txtNombreCliente.getText());
+		//String nombre = null;
+			if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
+			
+				//nombre = buscarNombre(txtNombreCliente.getText());
+			
+			
+			
 			if (nombre != null) {
+<<<<<<< HEAD
 				txtNITCliente.getText();
 				setNombreCliente(txtNombreCliente.getText());
 				setNITCliente(txtNITCliente.getText());
+=======
+				//txtNITCliente.getText();
+			
+>>>>>>> Andy
 			
 			
 			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
@@ -226,12 +244,85 @@ public class RegistroCFX {
 			MessageBox messageBox = new MessageBox();
 			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
 		}
-			
-			
-			
-			
-			
-			
+		
+				
 
 }	
+	
+	*/
+	
+
+	@FXML
+	private void btnContinuar_Action() {
+		
+		
+		FormsOperations formsOperations = new FormsOperations();
+		
+		//ventaFX.loadCBXCategoria();     //esto estaba con producto
+		
+		//PreparedStatement preparedStatement = null;
+		//int rows = 0;
+		
+		
+		
+		//String nombre = null;
+			if (!txtNITCliente.getText().isEmpty()) {
+			
+				//nombre = buscarNombre(txtNombreCliente.getText());
+			
+			boolean registrado = registrado();
+			
+			if (registrado) {
+				//txtNITCliente.getText();
+			
+			
+			
+			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
+			
+			ElegirFX ElegirFX = fXMLLoader.getController();
+			ElegirFX.setConnection(connection);
+			
+			
+			
+			
+			} else {
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Información", "El número de NIT no se encuentra registrado");
+			}
+
+		} else {
+			MessageBox messageBox = new MessageBox();
+			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
+		}
+		
+				
+
 }	
+<<<<<<< HEAD
+}	
+=======
+	private boolean registrado() {
+		PreparedStatement preparedStatement = null;
+		boolean registrado= false;
+		
+			try {
+				preparedStatement = connection.query("insert into cliente(nit, nombre) values(?,?)");
+				preparedStatement.setString(1, txtNITCliente.getText());
+				preparedStatement.setString(2, txtNombreCliente.getText());
+				preparedStatement.executeUpdate();
+		   
+			} catch (SQLException e) {
+				//MessageBox messageBox = new MessageBox();
+				//messageBox.message("Error en Consulta", e.getMessage());
+				registrado=true;
+			}
+		
+		return registrado;
+	}
+	
+
+	}
+
+
+
+>>>>>>> Andy
