@@ -10,28 +10,36 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class RegistroCFX {
+public class RegistroPFX {
 
 	private Connection connection;
-	@FXML
-	private Button btnRegistrarCliente;
-	@FXML
-	private Button btnCancelarCliente;
-	@FXML
-	private Button btnBuscarCliente;
-	@FXML
-	private Button btnActualizarCliente;
-	@FXML
-	private Button btnEliminarCliente;
-	@FXML
-	private TextField txtNITCliente;
-	@FXML
-	private TextField txtNombreCliente;
-
-	private String nombre;
 	
 	@FXML
-	private Button btnContinuar;
+	private Button btnActualizarP;
+	
+	
+	
+	@FXML
+	private TextField txtNombreP;
+	@FXML
+	private TextField txtDireccionP;
+
+	@FXML
+	private TextField txtInsumoP;
+
+	@FXML
+	private TextField txtPrecioP;
+
+	
+	
+	
+	//private String nombre;
+	
+	@FXML
+	private Button btnRegistrarProveedor;
+	
+	@FXML
+	private Button btnEliminarProveedor;
 	
 
 
@@ -46,13 +54,15 @@ public class RegistroCFX {
 	
 	
 	@FXML
-	private void btnRegistrarCliente_Action() {
+	private void btnRegistrarProveedor_Action() {
 		PreparedStatement preparedStatement = null;
-		if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
+		if (!txtNombreP.getText().isEmpty() && !txtDireccionP.getText().isEmpty()  && !txtInsumoP.getText().isEmpty()  && !txtPrecioP.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("insert into cliente(nit, nombre) values(?,?)");
-				preparedStatement.setString(1, txtNITCliente.getText());
-				preparedStatement.setString(2, txtNombreCliente.getText());
+				preparedStatement = connection.query("insert into proveedor( nombre,direccion,insumo,precio) values(?,?,?,?)");
+				preparedStatement.setString(1, txtNombreP.getText());
+				preparedStatement.setString(2, txtDireccionP.getText());
+				preparedStatement.setString(3, txtInsumoP.getText());
+				preparedStatement.setDouble(4, Double.parseDouble(txtPrecioP.getText()));  //aqui diria set String
 				preparedStatement.executeUpdate();
 		    //  txtNIT.setText(txtNITCliente.getText());
 			//	txtNombre.setText(txtNombreCliente.getText());
@@ -63,21 +73,23 @@ public class RegistroCFX {
 			}
 		} else {
 			MessageBox messageBox = new MessageBox();
-			messageBox.message("Error en Cliente", "Debe llenar ambos campos");
+			messageBox.message("Error en Cliente", "Debe llenar todos campos");
 		}
 	}
 
 	@FXML
-	private void btnCancelarCliente_Action() {
+	private void btnCancelarP_Action() {
 		cleanScreenCliente();
 	}
 
 	private void cleanScreenCliente() {
-		txtNITCliente.setText("");
-		txtNombreCliente.setText("");
+		txtNombreP.setText("");
+		txtDireccionP.setText("");
+		txtInsumoP.setText("");
+		txtPrecioP.setText("");
 	}
 
-	@FXML
+	/*@FXML
 	private void btnBuscarCliente_Action() {
 		String nombre = null;
 		if (!txtNITCliente.getText().isEmpty()) {
@@ -93,12 +105,12 @@ public class RegistroCFX {
 			MessageBox messageBox = new MessageBox();
 			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
 		}
-	}
-
+	}*/
+/*
 	@FXML
 	private void btnActualizarCliente_Action() {
 		PreparedStatement preparedStatement = null;
-		if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
+		if (!txtNombre.getText().isEmpty() && !txtDireccion.getText().isEmpty()) {
 			try {
 				preparedStatement = connection.query("update cliente set nombre = ? where nit = ?");
 				preparedStatement.setString(2, txtNITCliente.getText());
@@ -115,7 +127,7 @@ public class RegistroCFX {
 			messageBox.message("Error en Cliente", "Debe llenar ambos campos");
 		}
 	}
-
+*//*
 	@FXML
 	private void btnEliminarCliente_Action() {
 		PreparedStatement preparedStatement = null;
@@ -140,8 +152,8 @@ public class RegistroCFX {
 			MessageBox messageBox = new MessageBox();
 			messageBox.message("Error en Cliente", "Debe llenar el campo NIT");
 		}
-	}
-	
+	}*/
+	/*
 	
 	private String buscarNombre(String NIT) {
 		 nombre = null;
@@ -161,105 +173,9 @@ public class RegistroCFX {
 		}
 		return nombre;
 	}
-	 //tipo esto da pero ya no
-	
+	 */
+
 	/*
-	@FXML
-	private void btnContinuar_Action() {
-		
-		
-		FormsOperations formsOperations = new FormsOperations();
-		
-		//ventaFX.loadCBXCategoria();     //esto estaba con producto
-		
-		//PreparedStatement preparedStatement = null;
-		//int rows = 0;
-		
-		
-		
-		//String nombre = null;
-			if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
-			
-				//nombre = buscarNombre(txtNombreCliente.getText());
-			
-			
-			
-			if (nombre != null) {
-				//txtNITCliente.getText();
-			
-			
-			
-			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
-			
-			ElegirFX ElegirFX = fXMLLoader.getController();
-			ElegirFX.setConnection(connection);
-			
-			
-			
-			
-			} else {
-				MessageBox messageBox = new MessageBox();
-				messageBox.message("Información", "El número de NIT no se encuentra registrado");
-			}
-
-		} else {
-			MessageBox messageBox = new MessageBox();
-			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
-		}
-		
-				
-
-}	
-	
-	*/
-	
-
-	@FXML
-	private void btnContinuar_Action() {
-		
-		
-		FormsOperations formsOperations = new FormsOperations();
-		
-		//ventaFX.loadCBXCategoria();     //esto estaba con producto
-		
-		//PreparedStatement preparedStatement = null;
-		//int rows = 0;
-		
-		
-		
-		//String nombre = null;
-			if (!txtNITCliente.getText().isEmpty()) {
-			
-				//nombre = buscarNombre(txtNombreCliente.getText());
-			
-			boolean registrado = registrado();
-			
-			if (registrado) {
-				//txtNITCliente.getText();
-			
-			
-			
-			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
-			
-			ElegirFX ElegirFX = fXMLLoader.getController();
-			ElegirFX.setConnection(connection);
-			
-			
-			
-			
-			} else {
-				MessageBox messageBox = new MessageBox();
-				messageBox.message("Información", "El número de NIT no se encuentra registrado");
-			}
-
-		} else {
-			MessageBox messageBox = new MessageBox();
-			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
-		}
-		
-				
-
-}	
 	private boolean registrado() {
 		PreparedStatement preparedStatement = null;
 		boolean registrado= false;
@@ -277,7 +193,7 @@ public class RegistroCFX {
 			}
 		
 		return registrado;
-	}
+	}*/
 	
 
 	}

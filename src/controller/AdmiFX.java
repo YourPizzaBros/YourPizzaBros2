@@ -49,9 +49,9 @@ public class AdmiFX {
 	private void btnRegistrar_Action() 
 	{
 		FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Proveedores" , "/view/RegistroFX.fxml");
-		RegistroFX RegistroFX = fXMLLoader.getController();
-		RegistroFX.setConnection(connection);
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Proveedores" , "/view/RegistroPFX.fxml");
+		RegistroPFX RegistroPFX = fXMLLoader.getController();
+		RegistroPFX.setConnection(connection);
 		
 	}
 	

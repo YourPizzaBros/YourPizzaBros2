@@ -65,7 +65,7 @@ public class ElegirFX {
 	@FXML
 	private void btnPedido_Action() {
 		
-		
+		System.out.println("apreto boton pedido");
 		FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Formulario Venta" , "/view/VentaFX.fxml");
 		
