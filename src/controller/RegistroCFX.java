@@ -28,7 +28,7 @@ public class RegistroCFX {
 	@FXML
 	private TextField txtNombreCliente;
 
-	private String nombre;
+	private String apellido;
 	
 	@FXML
 	private Button btnContinuar;
@@ -100,7 +100,7 @@ public class RegistroCFX {
 		PreparedStatement preparedStatement = null;
 		if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("update cliente set Apellido = ? where nit = ?");
+				preparedStatement = connection.query("update cliente set ApellidoC = ? where nit = ?");
 				preparedStatement.setString(2, txtNITCliente.getText());
 				preparedStatement.setString(1, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
@@ -144,22 +144,22 @@ public class RegistroCFX {
 	
 	
 	private String buscarNombre(String NIT) {
-		 nombre = null;
+		 apellido = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
 		try {
-			preparedStatement = connection.query("select nombre from cliente " + "where nit = ?");
+			preparedStatement = connection.query("select ApellidoC from cliente " + "where nit = ?");
 			preparedStatement.setString(1, NIT);
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				nombre = resultSet.getString("nombre");
+				apellido = resultSet.getString("ApellidoC");
 			}
 		} catch (SQLException e) {
 			MessageBox messageBox = new MessageBox();
 			messageBox.message("Error Cliente", e.getMessage());
 		}
-		return nombre;
+		return apellido;
 	}
 	 //tipo esto da pero ya no
 	

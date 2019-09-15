@@ -2,7 +2,7 @@ package controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 
 import javafx.scene.layout.AnchorPane;
@@ -18,7 +18,7 @@ public class FormsOperations {
 			AnchorPane root = fXMLLoader.load();
 
 
-			root.setId("root");
+			//root.setId("root");
 
 			Stage stage = new Stage();
             Scene scene = new Scene(root,root.getPrefWidth(),root.getPrefHeight());
@@ -55,4 +55,27 @@ public class FormsOperations {
 		}
 		return fXMLLoader;
 	}
+	
+	
+	
+	
+	public FXMLLoader OpenFormTab(String title, String url) {
+		System.out.println("en tap pane");
+		FXMLLoader fXMLLoader = null;
+		try {
+			fXMLLoader = new FXMLLoader(getClass().getResource(url));
+			TabPane root = fXMLLoader.load();
+			Stage stage = new Stage();
+            Scene scene = new Scene(root,root.getPrefWidth(),root.getPrefHeight());
+            stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle(title);
+           	stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return fXMLLoader;
+	}
+	
 }

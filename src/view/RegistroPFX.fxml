@@ -8,22 +8,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroPFX">
    <children>
-      <Label layoutX="101.0" layoutY="115.0" text="Nombre : ">
+      <Label layoutX="94.0" layoutY="110.0" text="Nombre : ">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="98.0" layoutY="164.0" text="Direccion :">
+      <Label layoutX="99.0" layoutY="213.0" text="Direccion :">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="96.0" layoutY="214.0" text="Insumo: ">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="98.0" layoutY="270.0" text="Precio Unidad :">
+      <Label layoutX="95.0" layoutY="164.0" text="Telefono: ">
          <font>
             <Font size="25.0" />
          </font>
@@ -33,12 +28,17 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNombre" layoutX="226.0" layoutY="121.0" prefHeight="25.0" prefWidth="260.0" />
-      <TextField fx:id="txtDireccion" layoutX="226.0" layoutY="170.0" prefHeight="25.0" prefWidth="260.0" />
-      <TextField fx:id="txtProducto" layoutX="226.0" layoutY="220.0" prefHeight="25.0" prefWidth="260.0" />
-      <TextField fx:id="txtPrecio" layoutX="282.0" layoutY="276.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="txtNombreP" layoutX="226.0" layoutY="121.0" prefHeight="25.0" prefWidth="260.0" />
+      <TextField fx:id="txtDireccionP" layoutX="237.0" layoutY="218.0" prefHeight="25.0" prefWidth="260.0" />
+      <TextField fx:id="txtTelefonoP" layoutX="226.0" layoutY="167.0" prefHeight="25.0" prefWidth="260.0" />
       <Button fx:id="btnRegistrarProveedor" layoutX="117.0" layoutY="331.0" mnemonicParsing="false" onAction="#btnRegistrarProveedor_Action" text="Registrar" />
-      <Button fx:id="btnEliminarP" layoutX="442.0" layoutY="331.0" mnemonicParsing="false" text="Eliminar" />
-      <Button fx:id="btnActualizarP" layoutX="282.0" layoutY="331.0" mnemonicParsing="false" text="Actualizar" />
+      <Button fx:id="btnEliminarP" layoutX="442.0" layoutY="331.0" mnemonicParsing="false" onAction="#btnEliminarProveedor_Action" text="Eliminar" />
+      <Button fx:id="btnActualizarP" layoutX="282.0" layoutY="331.0" mnemonicParsing="false" onAction="#btnActualizarProveedor_Action" text="Actualizar" />
+      <Label layoutX="94.0" layoutY="74.0" text="NIT : ">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNITP" layoutX="215.0" layoutY="77.0" prefHeight="25.0" prefWidth="260.0" />
    </children>
 </AnchorPane>

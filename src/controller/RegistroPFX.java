@@ -21,15 +21,16 @@ public class RegistroPFX {
 	
 	@FXML
 	private TextField txtNombreP;
+	
+	@FXML
+	private TextField txtNITP;
 	@FXML
 	private TextField txtDireccionP;
 
 	@FXML
-	private TextField txtInsumoP;
+	private TextField txtTelefonoP;
 
-	@FXML
-	private TextField txtPrecioP;
-
+	
 	
 	
 	
@@ -55,18 +56,19 @@ public class RegistroPFX {
 	
 	@FXML
 	private void btnRegistrarProveedor_Action() {
+		System.out.println("boton registrado");
 		PreparedStatement preparedStatement = null;
-		if (!txtNombreP.getText().isEmpty() && !txtDireccionP.getText().isEmpty()  && !txtInsumoP.getText().isEmpty()  && !txtPrecioP.getText().isEmpty()) {
+		
+		if (!txtNITP.getText().isEmpty() && !txtNombreP.getText().isEmpty() && !txtDireccionP.getText().isEmpty()  && !txtTelefonoP.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("insert into proveedor( nombre,direccion,insumo,precio) values(?,?,?,?)");
-				preparedStatement.setString(1, txtNombreP.getText());
-				preparedStatement.setString(2, txtDireccionP.getText());
-				preparedStatement.setString(3, txtInsumoP.getText());
-				preparedStatement.setDouble(4, Double.parseDouble(txtPrecioP.getText()));  //aqui diria set String
+				preparedStatement = connection.query("insert into proveedor( NITProveedor,nombreP,telefono,direccion) values(?,?,?,?)");
+				preparedStatement.setString(1, txtNITP.getText());
+				preparedStatement.setString(2, txtNombreP.getText());
+				preparedStatement.setString(3, txtTelefonoP.getText());
+				preparedStatement.setString(4, txtDireccionP.getText());
+			//	preparedStatement.setDouble(4, Double.parseDouble(txtPrecioP.getText()));  //aqui diria set String
 				preparedStatement.executeUpdate();
-		    //  txtNIT.setText(txtNITCliente.getText());
-			//	txtNombre.setText(txtNombreCliente.getText());
-			//	tbpPanel.getSelectionModel().select(tabVenta);
+		    
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());
@@ -85,17 +87,17 @@ public class RegistroPFX {
 	private void cleanScreenCliente() {
 		txtNombreP.setText("");
 		txtDireccionP.setText("");
-		txtInsumoP.setText("");
-		txtPrecioP.setText("");
+		txtTelefonoP.setText("");
+		
 	}
-
-	/*@FXML
-	private void btnBuscarCliente_Action() {
+/*
+	@FXML
+	private void btnBuscarProveedor_Action() {
 		String nombre = null;
-		if (!txtNITCliente.getText().isEmpty()) {
-			nombre = buscarNombre(txtNITCliente.getText());
+		if (!txtNITP.getText().isEmpty()) {
+			nombre = buscarP(txtNITP.getText());
 			if (nombre != null) {
-				txtNombreCliente.setText(nombre);
+				txtNombreP.setText(nombre);
 			} else {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Información", "El número de NIT no se encuentra registrado");
@@ -106,18 +108,20 @@ public class RegistroPFX {
 			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
 		}
 	}*/
-/*
+
 	@FXML
-	private void btnActualizarCliente_Action() {
+	private void btnActualizarProveedor_Action() {  //falata modificar
 		PreparedStatement preparedStatement = null;
-		if (!txtNombre.getText().isEmpty() && !txtDireccion.getText().isEmpty()) {
+		if (!txtNombreP.getText().isEmpty() && !txtDireccionP.getText().isEmpty() && !txtTelefonoP.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("update cliente set nombre = ? where nit = ?");
-				preparedStatement.setString(2, txtNITCliente.getText());
-				preparedStatement.setString(1, txtNombreCliente.getText());
+				preparedStatement = connection.query("update proveedor set nombreP = ?, telefono = ? , direccion = ?  where NITProveedor = ?");
+				preparedStatement.setString(4, txtNITP.getText());
+				preparedStatement.setString(3, txtDireccionP.getText());
+				preparedStatement.setString(2, txtTelefonoP.getText());
+				preparedStatement.setString(1, txtNombreP.getText());
 				preparedStatement.executeUpdate();
 				MessageBox messageBox = new MessageBox();
-				messageBox.message("Información", "Cliente actualizado con éxito");
+				messageBox.message("Información", "Proveedor actualizado con éxito");
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());
@@ -127,22 +131,22 @@ public class RegistroPFX {
 			messageBox.message("Error en Cliente", "Debe llenar ambos campos");
 		}
 	}
-*//*
+
 	@FXML
-	private void btnEliminarCliente_Action() {
+	private void btnEliminarProveedor_Action() {
 		PreparedStatement preparedStatement = null;
 		int rows = 0;
 
-		if (!txtNITCliente.getText().isEmpty()) {
+		if (!txtNITP.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("delete from cliente where nit = ?");
-				preparedStatement.setString(1, txtNITCliente.getText());
+				preparedStatement = connection.query("delete from proveedor where NITProveedor = ?");
+				preparedStatement.setString(1, txtNITP.getText());
 				rows = preparedStatement.executeUpdate();
 				MessageBox messageBox = new MessageBox();
 				if (rows > 0) {
-					messageBox.message("Información", "Cliente eliminado con éxito");
+					messageBox.message("Información", "Proveedor eliminado con éxito");
 				} else {
-					messageBox.message("Información", "El cliente no esta registrado");
+					messageBox.message("Información", "El proveedor no esta registrado");
 				}
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
@@ -152,7 +156,7 @@ public class RegistroPFX {
 			MessageBox messageBox = new MessageBox();
 			messageBox.message("Error en Cliente", "Debe llenar el campo NIT");
 		}
-	}*/
+	}
 	/*
 	
 	private String buscarNombre(String NIT) {

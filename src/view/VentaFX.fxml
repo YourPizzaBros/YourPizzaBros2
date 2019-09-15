@@ -21,7 +21,7 @@
                <children>
                   <Label layoutX="73.0" layoutY="103.0" prefHeight="17.0" prefWidth="47.0" text="Fecha:" />
                   <DatePicker fx:id="dtpFecha" layoutX="141.0" layoutY="99.0" />
-                  <TextField fx:id="txtNIT" layoutX="141.0" layoutY="141.0" onAction="#txtNIT_Action" />
+                  <TextField fx:id="txtNIT" layoutX="141.0" layoutY="141.0" />
                   <Label layoutX="73.0" layoutY="145.0" prefHeight="17.0" prefWidth="47.0" text="NIT:" />
                   <TableView fx:id="tbvDetalle" layoutX="401.0" layoutY="64.0" prefHeight="269.0" prefWidth="260.0">
                     <columns>
