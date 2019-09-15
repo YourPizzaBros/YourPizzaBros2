@@ -1,24 +1,24 @@
 package model;
 
 public class Producto {
-	private int códigoProducto;
+	private int codigoProducto;
 	private String nombre;
 	private Double precio;
 	private String descripción;
 	private String tamano;
 	
-	public Producto (int códigoProducto, String nombre, Double precio, String descripción, String tamano) {
-		this.códigoProducto = códigoProducto;
+	public Producto (int codigoProducto, String nombre, Double precio, String descripción, String tamano) {
+		this.codigoProducto = codigoProducto;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.descripción = descripción;
 		this.tamano= tamano;
 	}
-	public int getCódigoProducto() {
-		return códigoProducto;
+	public int getCodigoProducto() {
+		return codigoProducto;
 	}
-	public void setCódigoProducto(int códigoProducto) {
-		this.códigoProducto = códigoProducto;
+	public void setCodigoProducto(int codigoProducto) {
+		this.codigoProducto = codigoProducto;
 	}
 	public String getNombre() {
 		return nombre;
@@ -47,7 +47,7 @@ public class Producto {
 	}
 	@Override
 	public String toString() {
-		return "Producto [códigoProducto=" + códigoProducto + ", nombre=" + nombre + ", precio=" + precio
+		return "Producto [códigoProducto=" + codigoProducto + ", nombre=" + nombre + ", precio=" + precio
 				+ ", descripción=" + descripción +  ", tamaño =" + tamano + "]";
 	}
 	

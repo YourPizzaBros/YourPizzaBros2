@@ -50,7 +50,7 @@ public class RegistroCFX {
 		PreparedStatement preparedStatement = null;
 		if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("insert into cliente(nit, nombre) values(?,?)");
+				preparedStatement = connection.query("insert into cliente(nit, ApellidoC) values(?,?)");
 				preparedStatement.setString(1, txtNITCliente.getText());
 				preparedStatement.setString(2, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
@@ -100,7 +100,7 @@ public class RegistroCFX {
 		PreparedStatement preparedStatement = null;
 		if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("update cliente set nombre = ? where nit = ?");
+				preparedStatement = connection.query("update cliente set Apellido = ? where nit = ?");
 				preparedStatement.setString(2, txtNITCliente.getText());
 				preparedStatement.setString(1, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();

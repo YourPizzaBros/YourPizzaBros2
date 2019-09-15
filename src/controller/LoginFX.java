@@ -31,7 +31,7 @@ public class LoginFX {
 	@FXML
 	private void btnOK_Action() {
 		try {
-			connection = new Connection(txtUser.getText(), txtPassword.getText(),"mitienda");
+			connection = new Connection(txtUser.getText(), txtPassword.getText(),"yourpizzabros");
 			System.out.println("se conecta");
 			if(txtUser.getText().equals("root")) 
 			{

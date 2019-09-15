@@ -144,7 +144,7 @@ public class VentaFX {
 				
 				for (DetalleTBV detalleTBV : tbvDetalle.getItems()) {
 
-					guardarDetalleVenta(númeroVenta, detalleTBV.getProductoCBX().getCódigoProducto(),
+					guardarDetalleVenta(númeroVenta, detalleTBV.getProductoCBX().getCodigoProducto(),
 							detalleTBV.getCantidad());
 				}
 				cleanScreen(); 
@@ -243,7 +243,7 @@ public class VentaFX {
 	
 	
 	
-	/*private boolean buscarNombre(String NIT) {
+	private String buscarNombre(String NIT) {
 		String nombre = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -260,7 +260,7 @@ public class VentaFX {
 			messageBox.message("Error Cliente", e.getMessage());
 		}
 		return nombre;
-	}*/
+	}
 
 	public void now() {
 

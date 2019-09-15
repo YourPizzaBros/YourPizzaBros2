@@ -40,9 +40,9 @@ public class AdmiFX {
 	private void btnComprar_Action() 
 	{
 		FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Comprar Producto" , "/view/ComprarFX.fxml");
-		ComprarFX comprarFX = fXMLLoader.getController();
-		comprarFX.setConnection(connection);
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Comprar Producto" , "/view/CompraFX.fxml");
+		CompraFX compraFX = fXMLLoader.getController();
+		compraFX.setConnection(connection);
 		
 	}
 	@FXML
