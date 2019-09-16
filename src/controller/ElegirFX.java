@@ -12,9 +12,6 @@ public class ElegirFX {
 	@FXML
 	public Button btnPedido;
 	
-	
-	
-	
 	@FXML
 	public Button btnCuenta;
 	
@@ -82,7 +79,7 @@ public class ElegirFX {
 		FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Formulario Pagar" , "/view/PagarFX.fxml");
 		PagarFX pagarFX = fXMLLoader.getController();
-		//pagarFX.setConnection(connection);
+		pagarFX.setConnection(connection);
 		
 		 //aqui tiene que venir con pagar
 	}

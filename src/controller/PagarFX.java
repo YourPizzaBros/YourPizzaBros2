@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 public class PagarFX {
-	private Connection connection;
+	private Connection  connection;
 	
 	public Connection getConnection() {
 		return connection;
@@ -58,6 +58,12 @@ public class PagarFX {
 		{
 			exc.printStackTrace();
 		}
+	}
+
+	public void setConnection(controller.Connection connection) {
+		// TODO Auto-generated method stub
+		this.connection = (Connection) connection;
+		
 	}
 	
 	

@@ -1,11 +1,9 @@
 package controller;
 
 
-<<<<<<< HEAD
+
 import javafx.fxml.FXML;
 //import javafx.scene.control.Label;
-=======
->>>>>>> Andy
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -187,11 +185,7 @@ public class RegistroCFX {
 		}
 		return apellido;
 	}
-<<<<<<< HEAD
 
-	
-	
-=======
 	 //tipo esto da pero ya no
 	
 	/*
@@ -298,9 +292,7 @@ public class RegistroCFX {
 				
 
 }	
-<<<<<<< HEAD
-}	
-=======
+
 	private boolean registrado() {
 		PreparedStatement preparedStatement = null;
 		boolean registrado= false;
@@ -325,4 +317,4 @@ public class RegistroCFX {
 
 
 
->>>>>>> Andy
+

@@ -2,10 +2,10 @@ package controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-<<<<<<< HEAD
-=======
+
+
 import javafx.scene.control.TabPane;
->>>>>>> Andy
+
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -18,13 +18,10 @@ public class FormsOperations {
 		try {
 			fXMLLoader = new FXMLLoader(getClass().getResource(url));
 			AnchorPane root = fXMLLoader.load();
-<<<<<<< HEAD
+
 	        root.setId("root");
-=======
 
 
-			//root.setId("root");
->>>>>>> Andy
 
 			Stage stage = new Stage();
             Scene scene = new Scene(root,root.getPrefWidth(),root.getPrefHeight());

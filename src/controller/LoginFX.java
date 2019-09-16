@@ -44,6 +44,7 @@ public class LoginFX {
 			else if(txtUser.getText().equals("cliente")) 
 			{
 				FormsOperations formsOperations = new FormsOperations();
+				
 				FXMLLoader fXMLLoader = formsOperations.OpenForm("Registro Cliente","/view/RegistroCFX.fxml");
 				RegistroCFX registroCFX =  fXMLLoader.getController();
 				registroCFX.setConnection(connection);
