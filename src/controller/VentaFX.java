@@ -32,7 +32,7 @@ public class VentaFX {
 	private TableView<DetalleTBV> tbvDetalle;
 	@FXML
 	private TableColumn<DetalleTBV, String> tbcProducto;
-	@FXML
+	@FXML	
 	private TableColumn<DetalleTBV, String> tbcCantidad;
 	@FXML
 	private TextField txtCantidad;

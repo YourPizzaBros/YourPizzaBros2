@@ -229,9 +229,11 @@ public class CompraFX {
 			 * Se carga el comboBox con Producto
 			 */
 			while (resultSet.next()) {
-				insumoCBX = new InsumoCBX(resultSet.getInt("codigoInsumo"), resultSet.getString("nombre"),
+				/*insumoCBX = new InsumoCBX(resultSet.getInt("codigoInsumo"), resultSet.getString("nombre"),
 						resultSet.getDouble("precio"), resultSet.getString("descripcion"),
-						resultSet.getString("tamano"));
+						resultSet.getString("tamano"));*/
+				insumoCBX = new InsumoCBX(resultSet.getInt("codigoInsumo"), resultSet.getString("nombre"),
+						resultSet.getString("descripcion"));
 				cbxInsumo.getItems().add(insumoCBX);
 			}
 
@@ -279,13 +281,13 @@ public class CompraFX {
 
 	class InsumoCBX extends model.Insumo {
 
-		public InsumoCBX(int códigoProducto, String nombre, Double precio, String descripcion, String tamano) {
-			super(códigoProducto, nombre, precio, descripcion, tamano);
+		public InsumoCBX(int códigoProducto, String nombre,/* Double precio,*/ String descripcion) {
+			super(códigoProducto, nombre, /*precio,*/ descripcion);
 		}
 
 		@Override
 		public String toString() {
-			return " "+ getNombre() + " .Tamaño : " + getTamano() ;
+			return " "+ getNombre() ;
 		}
 		
 		

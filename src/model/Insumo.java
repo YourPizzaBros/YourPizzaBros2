@@ -3,14 +3,14 @@ package model;
 public class Insumo {
 	private int codigoInsumo;
 	private String nombre;
-	private Double precio;
+	//private Double precio;
 	private String descripción;
 	private String tamano;
 	
-	public Insumo (int codigoProducto, String nombre, Double precio, String descripción, String tamano) {
+	public Insumo (int codigoInsumo, String nombre/*, Double precio*/, String descripción) {
 		this.codigoInsumo = codigoInsumo;
 		this.nombre = nombre;
-		this.precio = precio;
+	//	this.precio = precio;
 		this.descripción = descripción;
 		this.tamano= tamano;
 	}
@@ -29,12 +29,12 @@ public class Insumo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Double getPrecio() {
+	/*public Double getPrecio() {
 		return precio;
 	}
 	public void setPrecio(Double precio) {
 		this.precio = precio;
-	}
+	}*/
 	public String getDescripción() {
 		return descripción;
 	}
@@ -42,16 +42,11 @@ public class Insumo {
 		this.descripción = descripción;
 	}
 	
-	public String getTamano() {
-		return tamano;
-	}
-	public void setTamano(String tamano) {
-		this.tamano = tamano;
-	}
+	
 	@Override
 	public String toString() {
-		return "Producto [códigoProducto=" + codigoInsumo + ", nombre=" + nombre + ", precio=" + precio
-				+ ", descripción=" + descripción +  ", tamaño =" + tamano + "]";
+		return "Insumo [códigoInsumo=" + codigoInsumo + ", nombre=" + nombre + /*", precio=" + precio
+				+ ,*/ "descripción=" + descripción +  ", tamaño =" + tamano + "]";
 	}
 	
 	
