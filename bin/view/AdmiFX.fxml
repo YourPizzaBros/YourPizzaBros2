@@ -4,19 +4,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdmiFX">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdmiFX">
    <children>
-      <Button fx:id="btnComprar" layoutX="155.0" layoutY="173.0" mnemonicParsing="false" onAction="#btnComprar_Action" text="Comprar Productos">
+      <Button fx:id="btnRegistrarProductos" layoutX="151.0" layoutY="248.0" mnemonicParsing="false" onAction="#btnRegistrarProductos_Action" prefHeight="54.0" prefWidth="271.0" text="Registrar Productos">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="btnVerificar" layoutX="153.0" layoutY="99.0" mnemonicParsing="false" onAction="#btnVerificar_Action" text="Verificar Productos">
+      <Button fx:id="btnVerInsumos" layoutX="151.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnVerInsumos_Action" text="Ver Insumos Actuales">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="btnRegistrar" layoutX="153.0" layoutY="250.0" mnemonicParsing="false" onAction="#btnRegistrar_Action" text="Registrar Proveedor">
+      <Button fx:id="btnRegistrarProveedor" layoutX="151.0" layoutY="412.0" mnemonicParsing="false" onAction="#btnRegistrarProveedor_Action" prefHeight="54.0" prefWidth="271.0" text="Registrar Proveedor">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRegistrarInsumos" layoutX="157.0" layoutY="94.0" mnemonicParsing="false" onAction="#btnRegistarInsumos_Action" prefHeight="54.0" prefWidth="271.0" text="Registrar Insumos">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRegistrarReseta" layoutX="151.0" layoutY="173.0" mnemonicParsing="false" onAction="#btnRegistrarReseta_Action" prefHeight="54.0" prefWidth="271.0" text="Registrar Reseta">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnComprarInsumos" layoutX="151.0" layoutY="331.0" mnemonicParsing="false" onAction="#btnComprarInsumos_Action" prefHeight="54.0" prefWidth="271.0" text="Comprar Insumos">
          <font>
             <Font size="25.0" />
          </font>

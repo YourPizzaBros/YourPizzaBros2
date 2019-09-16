@@ -22,31 +22,40 @@ public class AdmiFX {
 	}
 	
 	@FXML
-	private Button btnVerificar;
+	private Button btnVerInsumos;
 	@FXML
-	private Button btnComprar;
+	private Button btnComprarInsumos;
 	@FXML
-	private Button btnRegistrar;
+	private Button btnRegistrarProveedor;
+	
 	@FXML
-	private void btnVerificar_Action() 
+	private Button btnRegistraInsumos;
+	@FXML
+	private Button btnRegistrarReseta;
+	@FXML
+	private Button btnRegistrarProductos;
+	
+	
+	@FXML
+	private void btnVerInsumos_Action() 
 	{
 		FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Productos en Almacén" , "/view/MostrarFX.fxml");
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Insumos en Almacén" , "/view/MostrarFX.fxml");
 		MostrarFX mostrarFX = fXMLLoader.getController();
 		mostrarFX.setConnection(connection);
 		
 	}
 	@FXML
-	private void btnComprar_Action() 
+	private void btnComprarInsumos_Action() 
 	{
 		FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Comprar Producto" , "/view/CompraFX.fxml");
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Comprar Insumo" , "/view/CompraFX.fxml");
 		CompraFX compraFX = fXMLLoader.getController();
 		compraFX.setConnection(connection);
 		
 	}
 	@FXML
-	private void btnRegistrar_Action() 
+	private void btnRegistrarProveedor_Action() 
 	{
 		FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Proveedores" , "/view/RegistroPFX.fxml");
@@ -54,6 +63,35 @@ public class AdmiFX {
 		RegistroPFX.setConnection(connection);
 		
 	}
+	@FXML
+	private void btnRegistarInsumos_Action() 
+	{
+		FormsOperations formsOperations = new FormsOperations();
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Insumo" , "/view/RegistrarInsumoFX.fxml");
+		RegistroInsumoFX RegistroIFX = fXMLLoader.getController();
+		RegistroIFX.setConnection(connection);
+		
+	}
+	@FXML
+	private void btnRegistrarReseta_Action() 
+	{
+	/*	FormsOperations formsOperations = new FormsOperations();
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Reseta" , "/view/RegistrarResetaFX.fxml");
+		RegistroResetaFX RegistroRFX = fXMLLoader.getController();
+		RegistroRFX.setConnection(connection);
+	*/	
+	}
+	
+	@FXML
+	private void btnRegistrarProductos_Action() 
+	{
+		FormsOperations formsOperations = new FormsOperations();
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Producto" , "/view/RegistrarProductoFX.fxml");
+		RegistroProductoFX RegistroProdFX = fXMLLoader.getController();
+		RegistroProdFX.setConnection(connection);
+		
+	}
+	
 	
 	
 }

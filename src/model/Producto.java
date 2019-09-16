@@ -6,6 +6,7 @@ public class Producto {
 	private Double precio;
 	private String descripción;
 	private String tamano;
+	private int cantidadTotal;   //anadiendo esto ya que no estabas
 	
 	public Producto (int codigoProducto, String nombre, Double precio, String descripción, String tamano) {
 		this.codigoProducto = codigoProducto;
@@ -13,9 +14,16 @@ public class Producto {
 		this.precio = precio;
 		this.descripción = descripción;
 		this.tamano= tamano;
+		this.cantidadTotal=0;
 	}
 	public int getCodigoProducto() {
 		return codigoProducto;
+	}
+	public int getCantidadTotal() {
+		return cantidadTotal;
+	}
+	public void setCantidadTotal(int cantidadTotal) {
+		this.cantidadTotal = cantidadTotal;
 	}
 	public void setCodigoProducto(int codigoProducto) {
 		this.codigoProducto = codigoProducto;
