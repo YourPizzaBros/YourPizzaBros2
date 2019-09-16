@@ -48,11 +48,11 @@ public class AdmiFX {
 	@FXML
 	private void btnComprarInsumos_Action() 
 	{
-		FormsOperations formsOperations = new FormsOperations();
+/*		FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Comprar Insumo" , "/view/CompraFX.fxml");
 		CompraFX compraFX = fXMLLoader.getController();
 		compraFX.setConnection(connection);
-		
+		*/
 	}
 	@FXML
 	private void btnRegistrarProveedor_Action() 
@@ -75,11 +75,14 @@ public class AdmiFX {
 	@FXML
 	private void btnRegistrarReseta_Action() 
 	{
-	/*	FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Reseta" , "/view/RegistrarResetaFX.fxml");
+		FormsOperations formsOperations = new FormsOperations();
+		FXMLLoader fXMLLoader = formsOperations.OpenFormTab ("Registrar Receta" , "/view/RegistrarResetaFX.fxml");
 		RegistroResetaFX RegistroRFX = fXMLLoader.getController();
 		RegistroRFX.setConnection(connection);
-	*/	
+		RegistroRFX.loadcbxInsumo();
+		RegistroRFX.loadcbxProducto();
+		
+		
 	}
 	
 	@FXML

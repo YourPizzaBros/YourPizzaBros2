@@ -61,24 +61,38 @@ public class RegistroProductoFX {
 		
 		@FXML
 		private void btnRegistrarProducto_Action() {
-			System.out.println("boton registrado");
+			
 			PreparedStatement preparedStatement = null;
 			
+			boolean registradoP =false;
+			
 			if (!txtNombreProducto.getText().isEmpty() && !txtPrecioUnidadP.getText().isEmpty() && !txtDescripcion.getText().isEmpty()  && !txtTamano.getText().isEmpty()) {
+				
+				registradoP=registrado(txtNombreProducto.getText(),txtPrecioUnidadP.getText(),txtTamano.getText());
+				
+				if(!registradoP) {
 				try {
 					preparedStatement = connection.query("insert into producto( nombre ,precio ,descripcion, tamano,cantidad) values(?,?,?,?,0)");
 					preparedStatement.setString(1, txtNombreProducto.getText());
-					preparedStatement.setString(2, txtPrecioUnidadP.getText());
+					//preparedStatement.setString(2, txtPrecioUnidadP.getText());
 					preparedStatement.setString(3, txtDescripcion.getText());
 					preparedStatement.setString(4, txtTamano.getText());
-				//	preparedStatement.setDouble(4, Double.parseDouble(txtPrecioP.getText()));  //aqui diria set String
+					preparedStatement.setDouble(2, Double.parseDouble(txtPrecioUnidadP.getText()));  //aqui diria set String //esto acabo de cambiar
 					preparedStatement.executeUpdate();
 			    
 				} catch (SQLException e) {
 					MessageBox messageBox = new MessageBox();
 					messageBox.message("Error en Consulta", e.getMessage());
 				}
-			} else {
+			} 
+				
+				else {
+					MessageBox messageBox = new MessageBox();
+					messageBox.message("Error en Registro", "Producto Ya Registrador");
+					
+				}
+			}
+			else {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Cliente", "Debe llenar todos los campos");
 			}
@@ -95,6 +109,35 @@ public class RegistroProductoFX {
 			txtDescripcion.setText("");
 			txtTamano.setText("");
 			
+		}
+		
+		private boolean registrado(String nombre,String precio, String tamano) {
+			  //= null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSet = null;
+			boolean registrado=false;
+
+			try {
+				preparedStatement = connection.query("select producto.codProducto from producto " + " where producto.Nombre = ? " + 
+						" and producto.Tamano = ? " + 
+						" and producto.Precio = ? ");
+				preparedStatement.setString(1, nombre);
+				preparedStatement.setString(2, tamano);
+				preparedStatement.setString(3, precio);
+				resultSet = preparedStatement.executeQuery();
+				
+				if (!resultSet.next()) {
+					
+					registrado= false;
+				}
+				else {
+					registrado=true;
+				}
+			} catch (SQLException e) {
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Error Producto", e.getMessage());
+			}
+			return registrado;
 		}
 	/*
 		@FXML

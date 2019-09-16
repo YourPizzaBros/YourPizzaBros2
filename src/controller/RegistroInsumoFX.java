@@ -15,32 +15,25 @@ public class RegistroInsumoFX {
 	
 	
 
-
-
-
-	
-	
-	
-
 		private Connection connection;
 		
 		@FXML
-		private Button btnRegistrarProducto;
+		private Button btnRegistrarInsumo;
 		
 		@FXML
-		private Button btnCancelarProducto;
+		private Button btnCancelarInsumo;
 		
 		@FXML
-		private TextField txtNombreProducto;
-		
+		private TextField txtNombreInsumo;
+		/*
 		@FXML
 		private TextField txtPrecioUnidadP;
+		*/
+		
 		@FXML
-		private TextField txtDescripcion;
+		private TextField txtDescripcionInsumo;
 
-		@FXML
-		private TextField txtTamano;
-
+		
 		
 		
 		
@@ -65,17 +58,23 @@ public class RegistroInsumoFX {
 		
 		
 		@FXML
-		private void btnRegistrarProducto_Action() {
-			System.out.println("boton registrado");
-			PreparedStatement preparedStatement = null;
+		private void btnRegistrarInsumo_Action() {
 			
-			if (!txtNombreProducto.getText().isEmpty() && !txtPrecioUnidadP.getText().isEmpty() && !txtDescripcion.getText().isEmpty()  && !txtTamano.getText().isEmpty()) {
+			PreparedStatement preparedStatement = null;
+			boolean registradoI =false;
+			if (!txtNombreInsumo.getText().isEmpty() && !txtDescripcionInsumo.getText().isEmpty() ) {  ///aqui vendria a entrar lo que es precio
+				
+				registradoI=registrado(txtNombreInsumo.getText());
+			
+				if(!registradoI) {
+				
+				
 				try {
-					preparedStatement = connection.query("insert into producto( nombre ,precio ,descripcion, tamano) values(?,?,?,?)");
-					preparedStatement.setString(1, txtNombreProducto.getText());
-					preparedStatement.setString(2, txtPrecioUnidadP.getText());
-					preparedStatement.setString(3, txtDescripcion.getText());
-					preparedStatement.setString(4, txtTamano.getText());
+					preparedStatement = connection.query("insert into insumo( nombre ,descripcion, cantidad) values(?,?,0)");
+					preparedStatement.setString(1, txtNombreInsumo.getText());
+					preparedStatement.setString(2, txtDescripcionInsumo.getText());
+					//preparedStatement.setString(3, txtDescripcion.getText());
+				
 				//	preparedStatement.setDouble(4, Double.parseDouble(txtPrecioP.getText()));  //aqui diria set String
 					preparedStatement.executeUpdate();
 			    
@@ -83,27 +82,43 @@ public class RegistroInsumoFX {
 					MessageBox messageBox = new MessageBox();
 					messageBox.message("Error en Consulta", e.getMessage());
 				}
-			} else {
+				
+				
+				
+			     }
+				
+				else{
+					
+					MessageBox messageBox = new MessageBox();
+					messageBox.message("Error en Registro", "Insumo Ya Registrado");
+					
+					
+				}
+				
+			}
+				
+				
+				else {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Cliente", "Debe llenar todos los campos");
 			}
 		}
 
 		@FXML
-		private void btnCancelarProducto_Action() {
+		private void btnCancelarInsumo_Action() {
 			cleanScreenCliente();
 		}
 
 		private void cleanScreenCliente() {
-			txtNombreProducto.setText("");
-			txtPrecioUnidadP.setText("");
-			txtDescripcion.setText("");
-			txtTamano.setText("");
+			txtNombreInsumo.setText("");
+			//txtPrecioUnidadP.setText("");
+			txtDescripcionInsumo.setText("");
+			
 			
 		}
 	/*
 		@FXML
-		private void btnBuscarProveedor_Action() {
+		private void btnBuscarInsumo_Action() {
 			String nombre = null;
 			if (!txtNITP.getText().isEmpty()) {
 				nombre = buscarP(txtNITP.getText());
@@ -170,17 +185,17 @@ public class RegistroInsumoFX {
 		}*/
 		/*
 		
-		private String buscarNombre(String NIT) {
-			 nombre = null;
+		private String buscarCodigo(String nombre) {
+			 cod = null;
 			PreparedStatement preparedStatement = null;
 			ResultSet resultSet = null;
 
 			try {
-				preparedStatement = connection.query("select nombre from cliente " + "where nit = ?");
-				preparedStatement.setString(1, NIT);
+				preparedStatement = connection.query("select insumo.codInsumo from insumo " + "where insumo.nombre = ?");
+				preparedStatement.setString(1, nombre);
 				resultSet = preparedStatement.executeQuery();
 				if (resultSet.next()) {
-					nombre = resultSet.getString("nombre");
+					cod = resultSet.getString("nombre");
 				}
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
@@ -190,25 +205,32 @@ public class RegistroInsumoFX {
 		}
 		 */
 
-		/*
-		private boolean registrado() {
+		
+		private boolean registrado(String nombre) {
+			  //= null;
 			PreparedStatement preparedStatement = null;
-			boolean registrado= false;
+			ResultSet resultSet = null;
+			boolean registrado=false;
+
+			try {
+				preparedStatement = connection.query("select insumo.codInsumo from insumo " + "where insumo.nombre like ?  ");
+				preparedStatement.setString(1, nombre);
 			
-				try {
-					preparedStatement = connection.query("insert into cliente(nit, nombre) values(?,?)");
-					preparedStatement.setString(1, txtNITCliente.getText());
-					preparedStatement.setString(2, txtNombreCliente.getText());
-					preparedStatement.executeUpdate();
-			   
-				} catch (SQLException e) {
-					//MessageBox messageBox = new MessageBox();
-					//messageBox.message("Error en Consulta", e.getMessage());
+				resultSet = preparedStatement.executeQuery();
+				
+				if (!resultSet.next()) {
+					
+					registrado= false;
+				}
+				else {
 					registrado=true;
 				}
-			
+			} catch (SQLException e) {
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Error Insumo", e.getMessage());
+			}
 			return registrado;
-		}*/
+		}
 		
 
 		
