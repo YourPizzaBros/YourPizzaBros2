@@ -309,6 +309,7 @@ public class RegistroResetaFX {
 			if (!txtCodProducto.getText().isEmpty() && !txtCodInsumo.getText().isEmpty() && !txtCantidad.getText().isEmpty()) {
 				try {
 					preparedStatement = connection.query("insert into receta(codInsumo, codProducto , cantidad) values(?,?,?)");
+					System.out.println(txtCodInsumo.getText());
 					preparedStatement.setString(1, txtCodInsumo.getText());
 					preparedStatement.setString(2, txtCodProducto.getText());
 					preparedStatement.setString(3, txtCantidad.getText());
@@ -368,8 +369,9 @@ public class RegistroResetaFX {
 			
 			if (cbxNombreInsumo.getValue() != null) {
 				
-				
-				codigo = buscarInsumo(cbxNombreProducto.getValue().getNombre());
+				System.out.println("entro en aqi1");
+				codigo = buscarInsumo(cbxNombreInsumo.getValue().getNombre());
+				System.out.println(codigo);
 				if (codigo != null) {
 					txtCodigoInsumo.setText(codigo);
 					txtCodInsumo.setText(codigo);
@@ -419,7 +421,7 @@ public class RegistroResetaFX {
 			String codigo = null;
 
 			try {
-				preparedStatement = connection.query("select producto.codProducto from producto " + " where producto.Nombre = ?  ");
+				preparedStatement = connection.query("select insumo.codInsumo from insumo " + " where insumo.Nombre = ?  ");
 				preparedStatement.setString(1, nombre);
 				
 				resultSet = preparedStatement.executeQuery();
@@ -431,8 +433,9 @@ public class RegistroResetaFX {
 				
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
-				messageBox.message("Error Producto", e.getMessage());
+				messageBox.message("Error Insumo", e.getMessage());
 			}
+			
 			return codigo;
 		}
 /*
