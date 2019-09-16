@@ -218,9 +218,6 @@ public class RegistroResetaFX {
 				ResultSet resultSet = preparedStatement.executeQuery();
 				ProductoCBX productoCBX = null;
 
-				/*
-				 * Se carga el comboBox con Producto
-				 */
 				while (resultSet.next()) {
 					productoCBX = new ProductoCBX(resultSet.getInt("codProducto"), resultSet.getString("nombre"),
 							resultSet.getDouble("precio"), resultSet.getString("descripcion"),
