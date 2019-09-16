@@ -48,6 +48,7 @@ public class FormsOperations {
             stage.resizableProperty().setValue(resizable);
 			stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle(title);
+            stage.getIcons().add (new Image ("/image/pizzaIcon.png"));
            	stage.setScene(scene);
 			stage.show();
 		} catch(Exception e) {

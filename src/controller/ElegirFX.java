@@ -64,7 +64,7 @@ public class ElegirFX {
 		
 		System.out.println("apreto boton pedido");
 		FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenFormTab ("Formulario Venta" , "/view/VentaFX.fxml");
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Formulario Venta" , "/view/VentaFX.fxml");
 		System.out.println("entro a ventea");
 		VentaFX ventaFX = fXMLLoader.getController();
 		System.out.println("todo ok");
