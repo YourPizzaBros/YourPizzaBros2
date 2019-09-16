@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdmiFX">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdmiFX">
    <children>
       <Button fx:id="btnRegistrarProductos" layoutX="151.0" layoutY="248.0" mnemonicParsing="false" onAction="#btnRegistrarProductos_Action" prefHeight="54.0" prefWidth="271.0" text="Registrar Productos">
          <font>
@@ -32,6 +32,11 @@
          </font>
       </Button>
       <Button fx:id="btnComprarInsumos" layoutX="151.0" layoutY="331.0" mnemonicParsing="false" onAction="#btnComprarInsumos_Action" prefHeight="54.0" prefWidth="271.0" text="Comprar Insumos">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRegistrarMesa" layoutX="151.0" layoutY="487.0" mnemonicParsing="false" onAction="#btnRegistrarMesa_Action" prefHeight="54.0" prefWidth="271.0" text="Registrar Mesas">
          <font>
             <Font size="25.0" />
          </font>
