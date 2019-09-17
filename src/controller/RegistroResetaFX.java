@@ -300,29 +300,7 @@ public class RegistroResetaFX {
 
 		
 
-		@FXML
-		private void btnRegistrarRR_Action() {
-			PreparedStatement preparedStatement = null;
-			if (!txtCodProducto.getText().isEmpty() && !txtCodInsumo.getText().isEmpty() && !txtCantidad.getText().isEmpty()) {
-				try {
-					preparedStatement = connection.query("insert into receta(codInsumo, codProducto , cantidad) values(?,?,?)");
-					System.out.println(txtCodInsumo.getText());
-					preparedStatement.setString(1, txtCodInsumo.getText());
-					preparedStatement.setString(2, txtCodProducto.getText());
-					preparedStatement.setString(3, txtCantidad.getText());
-					preparedStatement.executeUpdate();
-					txtCodProducto.setText(txtCodigoProducto.getText());
-					txtCodInsumo.setText(txtCodigoInsumo.getText());
-					tbpPanel.getSelectionModel().select(tabReceta);   ///decia tabVneta
-				} catch (SQLException e) {
-					MessageBox messageBox = new MessageBox();
-					messageBox.message("Error en Consulta", e.getMessage());
-				}
-			} else {
-				MessageBox messageBox = new MessageBox();
-				messageBox.message("Error en Cliente", "Debe llenar todos los campos");
-			}
-		}
+		
 /*
 		@FXML
 		private void btnCancelarCliente_Action() {
@@ -435,29 +413,102 @@ public class RegistroResetaFX {
 			
 			return codigo;
 		}
-/*
 		@FXML
-		private void btnActualizarCliente_Action() {
+		private void btnRegistrarRR_Action() {
 			PreparedStatement preparedStatement = null;
-			if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
+			if (!txtCodProducto.getText().isEmpty() && !txtCodInsumo.getText().isEmpty() && !txtCantidad.getText().isEmpty()) {
+				boolean registrado =  false;
+				registrado=registrado( txtCodInsumo.getText(), txtCodProducto.getText());
+				
+				if(!registrado) {
 				try {
-					preparedStatement = connection.query("update cliente set nombre = ? where nit = ?");
-					preparedStatement.setString(2, txtNITCliente.getText());
-					preparedStatement.setString(1, txtNombreCliente.getText());
+					preparedStatement = connection.query("insert into receta(codInsumo, codProducto , cantidad) values(?,?,?)");
+					System.out.println(txtCodInsumo.getText());
+					preparedStatement.setString(1, txtCodInsumo.getText());
+					preparedStatement.setString(2, txtCodProducto.getText());
+					preparedStatement.setString(3, txtCantidad.getText());
+					preparedStatement.executeUpdate();
+					txtCodProducto.setText(txtCodigoProducto.getText());
+					txtCodInsumo.setText(txtCodigoInsumo.getText());
+					tbpPanel.getSelectionModel().select(tabReceta);   ///decia tabVneta
+				} catch (SQLException e) {
+					MessageBox messageBox = new MessageBox();
+					messageBox.message("Error en Consulta", e.getMessage());
+				}
+				}
+				
+				else {
+					MessageBox messageBox = new MessageBox();
+					messageBox.message("Error en Consulta", "receta ya registrada anteriormente");	
+				}
+				
+				
+			}
+			
+			
+			
+			
+			else {
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Error en Cliente", "Debe llenar todos los campos");
+			}
+			
+			
+			
+			
+			
+		}
+		
+		private boolean registrado(String codigoInsumo, String codigoProducto) {
+			  //= null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSet = null;
+			boolean registrado=false;
+
+			try {
+				preparedStatement = connection.query("select * from receta " + "where receta.codInsumo like ?  && receta.codProducto like ? ");
+				preparedStatement.setString(1, codigoInsumo);
+				preparedStatement.setString(2, codigoProducto);
+			
+				resultSet = preparedStatement.executeQuery();
+				
+				if (!resultSet.next()) {
+					
+					registrado= false;
+				}
+				else {
+					registrado=true;
+				}
+			} catch (SQLException e) {
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Error Insumo", e.getMessage());
+			}
+			return registrado;
+		}
+		
+		@FXML
+		private void btnActualizarReceta_Action() {
+			PreparedStatement preparedStatement = null;
+			if (!txtCodigoProducto.getText().isEmpty() && !txtCodigoInsumo.getText().isEmpty()) {
+				try {
+					preparedStatement = connection.query("update receta set cantidad = ? where codInsumo = ? && codProducto = ?");
+					preparedStatement.setString(1, txtCantidad.getText());
+					preparedStatement.setString(2, txtCodInsumo.getText());
+					preparedStatement.setString(3, txtCodProducto.getText());
 					preparedStatement.executeUpdate();
 					MessageBox messageBox = new MessageBox();
-					messageBox.message("Información", "Cliente actualizado con éxito");
+					messageBox.message("Información", "Receta actualizada con éxito");
 				} catch (SQLException e) {
 					MessageBox messageBox = new MessageBox();
 					messageBox.message("Error en Consulta", e.getMessage());
 				}
 			} else {
 				MessageBox messageBox = new MessageBox();
-				messageBox.message("Error en Cliente", "Debe llenar ambos campos");
+				messageBox.message("Error en Receta", "Debe llenar ambos campos");
 			}
 		}
 
-*/
+
 	}
 
 	
