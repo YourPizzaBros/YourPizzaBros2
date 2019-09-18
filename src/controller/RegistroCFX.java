@@ -29,6 +29,7 @@ public class RegistroCFX {
 	private TextField txtNombreCliente;
 
 	private String apellido;
+	private String nit;
 	
 	@FXML
 	private Button btnContinuar;
@@ -161,58 +162,13 @@ public class RegistroCFX {
 		}
 		return apellido;
 	}
-	 //tipo esto da pero ya no
+	 
 	
-	/*
-	@FXML
-	private void btnContinuar_Action() {
+	public String getNIT () {
+		System.out.println(nit);
+		return nit;
 		
-		
-		FormsOperations formsOperations = new FormsOperations();
-		
-		//ventaFX.loadCBXCategoria();     //esto estaba con producto
-		
-		//PreparedStatement preparedStatement = null;
-		//int rows = 0;
-		
-		
-		
-		//String nombre = null;
-			if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
-			
-				//nombre = buscarNombre(txtNombreCliente.getText());
-			
-			
-			
-			if (nombre != null) {
-				//txtNITCliente.getText();
-			
-			
-			
-			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
-			
-			ElegirFX ElegirFX = fXMLLoader.getController();
-			ElegirFX.setConnection(connection);
-			
-			
-			
-			
-			} else {
-				MessageBox messageBox = new MessageBox();
-				messageBox.message("Información", "El número de NIT no se encuentra registrado");
-			}
-
-		} else {
-			MessageBox messageBox = new MessageBox();
-			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
-		}
-		
-				
-
-}	
-	
-	*/
-	
+	}
 
 	@FXML
 	private void btnContinuar_Action() {
@@ -220,30 +176,24 @@ public class RegistroCFX {
 		
 		FormsOperations formsOperations = new FormsOperations();
 		
-		//ventaFX.loadCBXCategoria();     //esto estaba con producto
 		
-		//PreparedStatement preparedStatement = null;
-		//int rows = 0;
-		
-		
-		
-		//String nombre = null;
 			if (!txtNITCliente.getText().isEmpty()) {
 			
-				//nombre = buscarNombre(txtNombreCliente.getText());
+			
 			
 			boolean registrado = registrado();
+		
 			
 			if (registrado) {
-				//txtNITCliente.getText();
-			
+				
 			
 			
 			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
 			
 			ElegirFX ElegirFX = fXMLLoader.getController();
 			ElegirFX.setConnection(connection);
-			
+			System.out.println(txtNITCliente.getText());
+			ElegirFX.setclienteNIT(txtNITCliente.getText());
 			
 			
 			
@@ -262,18 +212,26 @@ public class RegistroCFX {
 }	
 	private boolean registrado() {
 		PreparedStatement preparedStatement = null;
+		ResultSet resultset = null;
 		boolean registrado= false;
 		
 			try {
-				preparedStatement = connection.query("insert into cliente(nit, nombre) values(?,?)");
+				preparedStatement = connection.query("select cliente.apellidoC from cliente "
+						+ "  where cliente.nit = ?" );
 				preparedStatement.setString(1, txtNITCliente.getText());
-				preparedStatement.setString(2, txtNombreCliente.getText());
-				preparedStatement.executeUpdate();
+			//	preparedStatement.setString(2, txtNombreCliente.getText());
+			 resultset =preparedStatement.executeQuery();
+				
+				if ( resultset.next()) {
+					registrado=true;
+					
+				}
+				
 		   
 			} catch (SQLException e) {
-				//MessageBox messageBox = new MessageBox();
-				//messageBox.message("Error en Consulta", e.getMessage());
-				registrado=true;
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Error en Consulta Registrado", e.getMessage());
+				
 			}
 		
 		return registrado;

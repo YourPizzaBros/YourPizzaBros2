@@ -27,6 +27,7 @@ public class VentaFX {
 	@FXML
 	private TextField txtNIT;
 	
+	
 	@FXML
 	private TextField txtMesa;
 	@FXML
@@ -55,8 +56,10 @@ public class VentaFX {
 	private TabPane tbpPanel;
 	
 	
+	
+	
 	@FXML
-	private Tab tabMenu;  //cambiando de lo que era tab cliente
+	private Tab tabMenu; 
 	@FXML
 	private Tab tabVenta;
 	
@@ -64,44 +67,27 @@ public class VentaFX {
 	
 	@FXML
 	private void initialize() {
-		/*
-		 * Se define que tipo de datos guardará cada columna
-		 */
 		
-		
-		//txtNombre.setText(nombre);
+		 
 		tbcProducto.setCellValueFactory(new PropertyValueFactory<>("productoCBX"));
 		tbcCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 	}
+	
 
-	/*@FXML
-	private void txtNIT_Action() {
-		String nombre = null;
-		if (!txtNIT.getText().isEmpty()) {
-			nombre = buscarNombre(txtNIT.getText());
-			if (nombre != null) {
-				txtNombre.setText(nombre);
-			} else {
-				txtNITCliente.setText(txtNIT.getText());
-				tbpPanel.getSelectionModel().select(tabCliente);
-			}
-
-		} else {
-			MessageBox messageBox = new MessageBox();
-			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
-		}  /// este es para que aparezca el nit de la otra pagi
-	}*/
+	
 
 	@FXML
 	private void btnAñadirProducto_Action() {
+		
+		if(registrado()) {
 		
 		if (cbxProducto.getValue() != null && !txtCantidad.getText().isEmpty()) { // Se verifica si ambos no estan
 																					// vacios
 			DetalleTBV detalleTBV = new DetalleTBV(cbxProducto.getValue(), Integer.parseInt(txtCantidad.getText()));
 			if (!buscarDetalle(detalleTBV)) {
-				// Añade el objeto detalleTBV en la tabla
+				
 				tbvDetalle.getItems().add(detalleTBV);
-				// Despues de añadir, ambos cambian a estado vacio
+				
 				cbxProducto.setValue(null);
 				txtCantidad.setText("");
 			}else {
@@ -110,8 +96,18 @@ public class VentaFX {
 			}
 
 		}
+		}
+		
+		else{
+			MessageBox messageBox = new MessageBox();
+			messageBox.message("Información", "Su NIT es incorrecto");
+			
+			
+		}
 	}
 
+	
+	
 	private boolean buscarDetalle(DetalleTBV detalleTBV) {
 		boolean resp = false;
 		for (DetalleTBV item : tbvDetalle.getItems()) {
@@ -160,17 +156,41 @@ public class VentaFX {
 		}
 
 	}
-
+	private boolean registrado() {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultset = null;
+		boolean registrado= false;
+		
+			try {
+				preparedStatement = connection.query("select cliente.apellidoC from cliente "
+						+ "  where cliente.nit = ?" );
+				preparedStatement.setString(1, txtNIT.getText());
+		
+			 resultset =preparedStatement.executeQuery();
+				
+				if ( resultset.next()) {
+					registrado=true;
+					
+				}
+				
+		   
+			} catch (SQLException e) {
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Error en Consulta Registrado", e.getMessage());
+				
+			}
+		
+		return registrado;
+	}
+	
 	@FXML
 	private void btnCancelarVenta_Action() {
-		cleanScreen(); // Limpiamos la pantalla
+		cleanScreen(); 
 	}
 
 	
 
-	/*
-	 * Convierte un valor LocalDate (DatePicker) en java.util.Date
-	 */
+	
 	private java.util.Date convertToDate(LocalDate localDate) {
 		return Date.from(localDate.atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
 	}
@@ -184,7 +204,7 @@ public class VentaFX {
 
 			
 			preparedStatement = connection.queryGeneratedKeys("insert into Venta(nit,fecha, estado ,id_mesa) " + "values(?,?, 'SinPagar' ,?)");
-			// Convertimos la fecha de java.util en java.sql para guardarla
+		
 			preparedStatement.setDate(2, new java.sql.Date(fecha.getTime()));
 			preparedStatement.setString(1, txtNIT.getText());
 			preparedStatement.setString(3, txtMesa.getText());
@@ -246,10 +266,9 @@ public class VentaFX {
 		}
 	}
 	
-	
-	
+
 	private int buscarCodVenta () {
-		  //= null;
+		
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		int codigo=0;
@@ -324,6 +343,10 @@ public class VentaFX {
 		
 	}
 	
+	public void loadNIT (String nit) {
+	txtNIT.setText(nit);	
+		
+	}
 
 	public class DetalleTBV {
 		private ProductoCBX productoCBX;

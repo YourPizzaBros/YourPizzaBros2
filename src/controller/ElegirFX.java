@@ -12,24 +12,23 @@ public class ElegirFX {
 	@FXML
 	public Button btnPedido;
 	
+	private RegistroCFX registrocfx;
 	
-	
-	
+	private String clienteNIT;
 	@FXML
 	public Button btnCuenta;
 	
 	private Connection connection;
 	@FXML
-	private void initialize(String nit) {
-		
-		/*
-		txtNIT.setText(txtNITCliente.getText());
-		txtNombre.setText(txtNombreCliente.getText());
-		*/
-		
-		
+	private void initialize() {
 		
 	}
+	public void setclienteNIT(String nit) {
+		
+		this.clienteNIT=nit;
+		
+	}
+	
 	
 	public Connection getConnection() {
 		return connection;
@@ -71,8 +70,14 @@ public class ElegirFX {
 		System.out.println("entro a ventea");
 		VentaFX ventaFX = fXMLLoader.getController();
 		System.out.println("todo ok");
+		
 		ventaFX.setConnection(connection);
-		ventaFX.loadcbxProducto();     //esto estaba con producto
+		ventaFX.loadcbxProducto();   
+		ventaFX.loadNIT(clienteNIT);
+	
+		
+		
+		
 	}
 	
 	@FXML

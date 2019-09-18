@@ -423,7 +423,7 @@ public class RegistroResetaFX {
 				if(!registrado) {
 				try {
 					preparedStatement = connection.query("insert into receta(codInsumo, codProducto , cantidad) values(?,?,?)");
-					System.out.println(txtCodInsumo.getText());
+					//System.out.println(txtCodInsumo.getText());
 					preparedStatement.setString(1, txtCodInsumo.getText());
 					preparedStatement.setString(2, txtCodProducto.getText());
 					preparedStatement.setString(3, txtCantidad.getText());
