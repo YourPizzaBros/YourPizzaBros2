@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="tbpPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="715.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroRelacionPCFX">
+  <tabs>
+    <Tab fx:id="tabRelacion" text="Registrar Relacion">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="405.0" prefWidth="715.0">
+               <children>
+                  <TextField fx:id="txtCodProv" layoutX="265.0" layoutY="157.0" prefHeight="31.0" prefWidth="78.0" />
+                  <TextField fx:id="txtCodInsumo" layoutX="262.0" layoutY="109.0" prefHeight="31.0" prefWidth="84.0" />
+                  <Label layoutX="74.0" layoutY="162.0" prefHeight="21.0" prefWidth="130.0" text="Codigo Proveedor:" />
+                  <Label layoutX="83.0" layoutY="114.0" prefHeight="21.0" prefWidth="112.0" text="Codigo Insumo:" />
+                  <Label layoutX="197.0" layoutY="11.0" prefHeight="53.0" prefWidth="341.0" text="Registrar Relacion" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnRegistrar" layoutX="62.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnRegistrar_Action" prefHeight="37.0" prefWidth="153.0" text="Registrar" />
+                  <Button fx:id="btnCancelar" layoutX="495.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnCancelar_Action" prefHeight="37.0" prefWidth="153.0" text="Cancelar " />
+                  <TextField fx:id="txtPrecio" layoutX="262.0" layoutY="207.0" prefHeight="31.0" prefWidth="85.0" />
+                  <Label layoutX="103.0" layoutY="212.0" prefHeight="21.0" prefWidth="94.0" text="Precio: " />
+                  <Button fx:id="btnActualizar" layoutX="280.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnActualizarRelacion_Action" prefHeight="43.0" prefWidth="164.0" text="Actualizar" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab fx:id="tabBC" text="Buscar Codigos">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="76.0" layoutY="117.0" text="Nombre Insumo:" />
+                  <Button fx:id="btnBuscarI" layoutX="531.0" layoutY="47.0" mnemonicParsing="false" onAction="#btnBuscarI_Action" prefHeight="46.0" prefWidth="148.0" text="Buscar Insumo" />
+                  <Label layoutX="72.0" layoutY="14.0" prefHeight="53.0" prefWidth="244.0" text="Buscar Codigo Insumo" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="55.0" layoutY="248.0" prefHeight="53.0" prefWidth="286.0" text="Buscar Codigo Proveedor" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnBuscarP" layoutX="531.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnBuscarP_Action" prefHeight="46.0" prefWidth="124.0" text="Buscar Proveedor" />
+                  <Label layoutX="81.0" layoutY="347.0" text="Nombre Proveedor:" />
+                  <ComboBox fx:id="cbxNombreI" layoutX="253.0" layoutY="112.0" prefHeight="31.0" prefWidth="177.0" />
+                  <ComboBox fx:id="cbxNombreP" layoutX="270.0" layoutY="342.0" prefWidth="150.0" />
+                  <Label layoutX="523.0" layoutY="117.0" text="Codigo Insumo:" />
+                  <TextField fx:id="txtCodigoI" layoutX="549.0" layoutY="149.0" prefHeight="31.0" prefWidth="64.0" />
+                  <Label layoutX="523.0" layoutY="347.0" text="Codigo Proveedor:" />
+                  <TextField fx:id="txtCodigoP" layoutX="550.0" layoutY="384.0" prefHeight="31.0" prefWidth="64.0" />
+               </children></AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

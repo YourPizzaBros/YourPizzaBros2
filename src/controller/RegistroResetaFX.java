@@ -44,7 +44,8 @@ public class RegistroResetaFX {
 		@FXML
 		private Button btnCancelarRR;
 		
-		
+		@FXML
+		private Button btnActualizarReceta;
 		
 		
 		
@@ -287,7 +288,7 @@ public class RegistroResetaFX {
 
 			@Override
 			public String toString() {
-				return getNombre() ;
+				return getNombre()  ;
 			}
 		}
 

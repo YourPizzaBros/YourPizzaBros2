@@ -36,6 +36,8 @@ public class AdmiFX {
 	@FXML
 	private Button btnRegistrarMesa;
 	@FXML
+	private Button btnRegistrarRelacion;
+	@FXML
 	private Button btnRegistrarProductos;
 	
 	
@@ -64,6 +66,18 @@ public class AdmiFX {
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Proveedores" , "/view/RegistroPFX.fxml");
 		RegistroPFX RegistroPFX = fXMLLoader.getController();
 		RegistroPFX.setConnection(connection);
+		
+	}
+	
+	@FXML
+	private void btnRegistrarRelacion_Action() 
+	{
+		FormsOperations formsOperations = new FormsOperations();
+		FXMLLoader fXMLLoader = formsOperations.OpenFormTab ("Registrar Relacion" , "/view/RegistrarRelacionPCFX.fxml");
+		RegistroRelacionPCFX RegistroPCFX = fXMLLoader.getController();
+		RegistroPCFX.setConnection(connection);
+		RegistroPCFX.loadcbxInsumo();
+		RegistroPCFX.loadcbxProveedor();
 		
 	}
 	@FXML
