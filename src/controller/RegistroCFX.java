@@ -71,8 +71,12 @@ public class RegistroCFX {
 				preparedStatement.setString(1, txtNITCliente.getText());
 				preparedStatement.setString(2, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
+<<<<<<< HEAD
 			
 				
+=======
+		
+>>>>>>> Andy
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());
@@ -177,7 +181,52 @@ public class RegistroCFX {
 		}
 		return apellido;
 	}
+<<<<<<< HEAD
 
+=======
+	 
+	
+	
+
+	@FXML
+	private void btnContinuar_Action() {
+		
+		
+		FormsOperations formsOperations = new FormsOperations();
+		
+		
+			if (!txtNITCliente.getText().isEmpty()) {
+			
+			
+			
+			boolean registrado = registrado();
+		
+			
+			if (registrado) {
+				
+			
+			
+			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
+			
+			ElegirFX ElegirFX = fXMLLoader.getController();
+			ElegirFX.setConnection(connection);
+		
+			ElegirFX.setclienteNIT(txtNITCliente.getText());
+			
+			
+			
+			} else {
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Información", "El número de NIT no se encuentra registrado");
+			}
+
+		} else {
+			MessageBox messageBox = new MessageBox();
+			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
+		}
+		
+				
+>>>>>>> Andy
 
 	
 	}

@@ -23,11 +23,6 @@ public class RegistroResetaFX {
 
 	
 
-
-		
-		
-		
-		
 		private Connection connection;
 		/*@FXML
 		private DatePicker dtpFecha;
