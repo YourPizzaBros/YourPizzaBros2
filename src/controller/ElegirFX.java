@@ -12,12 +12,11 @@ public class ElegirFX {
 	@FXML
 	public Button btnPedido;
 	
-<<<<<<< HEAD
-=======
+
 	private RegistroCFX registrocfx;
 	
 	private String clienteNIT;
->>>>>>> Andy
+
 	@FXML
 	public Button btnCuenta;
 	

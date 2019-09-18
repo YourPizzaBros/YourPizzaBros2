@@ -30,7 +30,7 @@ public class RegistroCFX {
 	private TextField txtNombreCliente;
 	
 	private String nombreCliente;
-	private String NITCliente;
+	
 	
 
 	private String apellido;
@@ -44,13 +44,7 @@ public class RegistroCFX {
 		this.nombreCliente = nombreCliente;
 	}
 
-	public String getNITCliente() {
-		return NITCliente;
-	}
-
-	public void setNITCliente(String nITCliente) {
-		NITCliente = nITCliente;
-	}
+	
 
 
 
@@ -77,11 +71,8 @@ public class RegistroCFX {
 				preparedStatement.setString(1, txtNITCliente.getText());
 				preparedStatement.setString(2, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
-				setNombreCliente(txtNombreCliente.getText());
-				setNITCliente(txtNITCliente.getText());
-				//  txtNIT.setText(txtNITCliente.getText());
-			//	txtNombre.setText(txtNombreCliente.getText());
-			//	tbpPanel.getSelectionModel().select(tabVenta);
+			
+				
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());
@@ -186,139 +177,9 @@ public class RegistroCFX {
 		}
 		return apellido;
 	}
-<<<<<<< HEAD
 
-	 //tipo esto da pero ya no
+
 	
-	/*
->>>>>>> Andy
-	@FXML
-	private void btnContinuar_Action() {
-		
-		
-		FormsOperations formsOperations = new FormsOperations();
-		
-		//ventaFX.loadCBXCategoria();     //esto estaba con producto
-		
-		//PreparedStatement preparedStatement = null;
-		//int rows = 0;
-		
-		
-		
-		//String nombre = null;
-			if (!txtNITCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()) {
-			
-				//nombre = buscarNombre(txtNombreCliente.getText());
-			
-			
-			
-			if (nombre != null) {
-<<<<<<< HEAD
-				txtNITCliente.getText();
-				setNombreCliente(txtNombreCliente.getText());
-				setNITCliente(txtNITCliente.getText());
-=======
-				//txtNITCliente.getText();
-			
->>>>>>> Andy
-			
-			
-			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
-			
-			ElegirFX ElegirFX = fXMLLoader.getController();
-			ElegirFX.setConnection(connection);
-			
-			
-			
-			
-			} else {
-				MessageBox messageBox = new MessageBox();
-				messageBox.message("Información", "El número de NIT no se encuentra registrado");
-			}
-
-		} else {
-			MessageBox messageBox = new MessageBox();
-			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
-		}
-=======
-	 
-	
-	public String getNIT () {
-		System.out.println(nit);
-		return nit;
->>>>>>> Andy
-		
-	}
-
-	@FXML
-	private void btnContinuar_Action() {
-		
-		
-		FormsOperations formsOperations = new FormsOperations();
-		
-		
-			if (!txtNITCliente.getText().isEmpty()) {
-			
-			
-			
-			boolean registrado = registrado();
-		
-			
-			if (registrado) {
-				
-			
-			
-			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
-			
-			ElegirFX ElegirFX = fXMLLoader.getController();
-			ElegirFX.setConnection(connection);
-			System.out.println(txtNITCliente.getText());
-			ElegirFX.setclienteNIT(txtNITCliente.getText());
-			
-			
-			
-			} else {
-				MessageBox messageBox = new MessageBox();
-				messageBox.message("Información", "El número de NIT no se encuentra registrado");
-			}
-
-		} else {
-			MessageBox messageBox = new MessageBox();
-			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
-		}
-		
-				
-
-}	
-
-	private boolean registrado() {
-		PreparedStatement preparedStatement = null;
-		ResultSet resultset = null;
-		boolean registrado= false;
-		
-			try {
-				preparedStatement = connection.query("select cliente.apellidoC from cliente "
-						+ "  where cliente.nit = ?" );
-				preparedStatement.setString(1, txtNITCliente.getText());
-			//	preparedStatement.setString(2, txtNombreCliente.getText());
-			 resultset =preparedStatement.executeQuery();
-				
-				if ( resultset.next()) {
-					registrado=true;
-					
-				}
-				
-		   
-			} catch (SQLException e) {
-				MessageBox messageBox = new MessageBox();
-				messageBox.message("Error en Consulta Registrado", e.getMessage());
-				
-			}
-		
-		return registrado;
-	}
-	
-
 	}
 
 
