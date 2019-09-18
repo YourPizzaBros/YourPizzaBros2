@@ -55,9 +55,7 @@ public class RegistroCFX {
 				preparedStatement.setString(1, txtNITCliente.getText());
 				preparedStatement.setString(2, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
-		    //  txtNIT.setText(txtNITCliente.getText());
-			//	txtNombre.setText(txtNombreCliente.getText());
-			//	tbpPanel.getSelectionModel().select(tabVenta);
+		
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());
@@ -164,11 +162,7 @@ public class RegistroCFX {
 	}
 	 
 	
-	public String getNIT () {
-		System.out.println(nit);
-		return nit;
-		
-	}
+	
 
 	@FXML
 	private void btnContinuar_Action() {
@@ -192,7 +186,7 @@ public class RegistroCFX {
 			
 			ElegirFX ElegirFX = fXMLLoader.getController();
 			ElegirFX.setConnection(connection);
-			System.out.println(txtNITCliente.getText());
+		
 			ElegirFX.setclienteNIT(txtNITCliente.getText());
 			
 			

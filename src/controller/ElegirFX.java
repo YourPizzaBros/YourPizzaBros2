@@ -39,26 +39,6 @@ public class ElegirFX {
 	}
 	
 	
-	/*@FXML
-	private void btnPedido_Action() {
-		try {
-			connection = new Connection(txtUser.getText(), txtPassword.getText(),"mitienda");
-			FormsOperations formsOperations = new FormsOperations();
-			FXMLLoader fXMLLoader = formsOperations.OpenFormTab("Venta", "/view/VentaFX.fxml");
-			VentaFX ventaFX = fXMLLoader.getController();
-			ventaFX.setConnection(connection);
-			ventaFX.loadcbxProducto();
-			ventaFX.now();
-			
-		} catch (ClassNotFoundException e) {
-			MessageBox msgBox = new MessageBox();
-			msgBox.message("Exception", e.getMessage());
-		} catch (SQLException e) {
-			MessageBox msgBox = new MessageBox();
-			msgBox.message("Exception", e.getMessage());
-		}
-	}*/
-	
 	
 	
 	@FXML
