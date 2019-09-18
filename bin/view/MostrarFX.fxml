@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="anchorPane" stylesheets="@../../bin/application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MostrarFX">
    <children>
-      <Label layoutX="82.0" layoutY="60.0" text="Productos" textFill="WHITE">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="321.0" layoutY="60.0" text="Proveedores" textFill="WHITE">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
+      <TableView fx:id="tableProductos" layoutX="68.0" layoutY="39.0" prefHeight="296.0" prefWidth="448.0">
+        <columns>
+          <TableColumn fx:id="tbcProducto" prefWidth="215.0" text="Productos" />
+          <TableColumn fx:id="tbcCantidad" minWidth="0.0" prefWidth="232.0" text="Cantidad" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnCargarP" layoutX="82.0" layoutY="352.0" mnemonicParsing="false" onAction="#btnCargarP_Action" text="Cargar Productos" />
    </children>
 </AnchorPane>

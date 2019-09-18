@@ -45,6 +45,7 @@ public class AdmiFX {
 		FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Insumos en Almacén" , "/view/MostrarFX.fxml");
 		MostrarFX mostrarFX = fXMLLoader.getController();
+		
 		mostrarFX.setConnection(connection);
 		
 	}

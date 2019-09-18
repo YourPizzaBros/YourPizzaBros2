@@ -236,7 +236,7 @@ public class VentaFX {
 			while (resultSet.next()) {
 				productoCBX = new ProductoCBX(resultSet.getInt("codProducto"), resultSet.getString("nombre"),
 						resultSet.getDouble("precio"), resultSet.getString("descripcion"),
-						resultSet.getString("tamano"));
+						resultSet.getString("tamano"), resultSet.getInt("cantidad"));
 				cbxProducto.getItems().add(productoCBX);
 			}
 
@@ -310,8 +310,8 @@ public class VentaFX {
 
 	class ProductoCBX extends model.Producto {
 
-		public ProductoCBX(int codigoProducto, String nombre, Double precio, String descripción, String tamano) {
-			super(codigoProducto, nombre, precio, descripción, tamano);
+		public ProductoCBX(int codigoProducto, String nombre, Double precio, String descripción, String tamano,int cantidad) {
+			super(codigoProducto, nombre, precio, descripción, tamano,cantidad);
 		}
 
 		

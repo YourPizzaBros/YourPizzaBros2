@@ -6,22 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="743.0" prefWidth="867.0" styleClass="anchorPane" stylesheets="@../../bin/application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroCFX">
+<AnchorPane prefHeight="743.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroCFX">
    <children>
-      <Label layoutX="358.0" layoutY="114.0" prefHeight="53.0" prefWidth="152.0" text="Cliente" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="358.0" layoutY="114.0" prefHeight="53.0" prefWidth="152.0" text="Cliente" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="241.0" layoutY="222.0" text="NIT :" textFill="WHITE">
-         <font>
-            <Font size="22.0" />
-         </font></Label>
+      <Label layoutX="229.0" layoutY="230.0" text="NIT :" />
       <TextField fx:id="txtNITCliente" layoutX="354.0" layoutY="225.0" prefHeight="25.0" prefWidth="219.0" text="12345" />
-      <Label layoutX="226.0" layoutY="282.0" text="Nombre :" textFill="#fffbfb">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
+      <Label layoutX="213.0" layoutY="288.0" text="Nombre :" />
       <TextField fx:id="txtNombreCliente" layoutX="355.0" layoutY="283.0" prefHeight="25.0" prefWidth="218.0" />
       <Button fx:id="btnRegistrarCliente" layoutX="260.0" layoutY="390.0" mnemonicParsing="false" onAction="#btnRegistrarCliente_Action" prefHeight="46.0" prefWidth="124.0" text="Registrar" />
       <Button fx:id="btnCancelarCliente" layoutX="478.0" layoutY="390.0" mnemonicParsing="false" onAction="#btnCancelarCliente_Action" prefHeight="46.0" prefWidth="124.0" text="Cancelar" />

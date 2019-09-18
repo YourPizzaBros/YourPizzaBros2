@@ -6,21 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="527.0" styleClass="anchorPane" stylesheets="@../../bin/application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroInsumoFX">
+<AnchorPane prefHeight="480.0" prefWidth="527.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroInsumoFX">
    <children>
-      <Label layoutX="152.0" layoutY="35.0" prefHeight="59.0" prefWidth="233.0" text="Registrar Insumo" textFill="WHITE">
+      <Label layoutX="152.0" layoutY="35.0" prefHeight="59.0" prefWidth="233.0" text="Registrar Insumo">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
       <TextField fx:id="txtNombreInsumo" layoutX="233.0" layoutY="143.0" prefHeight="25.0" prefWidth="260.0" />
       <TextField fx:id="txtDescripcionInsumo" layoutX="233.0" layoutY="212.0" prefHeight="25.0" prefWidth="260.0" />
-      <Label layoutX="48.0" layoutY="140.0" text="Nombre: " textFill="WHITE">
+      <Label layoutX="48.0" layoutY="140.0" text="Nombre: ">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="209.0" text="Descripción : " textFill="WHITE">
+      <Label layoutX="26.0" layoutY="209.0" text="Descripción : ">
          <font>
             <Font size="25.0" />
          </font>

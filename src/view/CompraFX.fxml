@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:id="tbpPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="715.0" styleClass="anchorPane" stylesheets="@../../bin/application/application.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompraFX">
+<TabPane fx:id="tbpPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="715.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompraFX">
   <tabs>
     <Tab fx:id="tabVenta" text="Venta">
       <content>
@@ -21,7 +21,7 @@
                <children>
                   <Label layoutX="73.0" layoutY="103.0" prefHeight="17.0" prefWidth="47.0" text="Fecha:" />
                   <DatePicker fx:id="dtpFecha" layoutX="141.0" layoutY="99.0" />
-                  <TableView fx:id="tbvDetalle" layoutX="385.0" layoutY="64.0" prefHeight="319.0" prefWidth="315.0" styleClass="anchorPane" stylesheets="@../../bin/application/application.css">
+                  <TableView fx:id="tbvDetalle" layoutX="385.0" layoutY="64.0" prefHeight="319.0" prefWidth="315.0">
                     <columns>
                       <TableColumn fx:id="tbcInsumo" prefWidth="177.0" text="Insumo" />
                       <TableColumn fx:id="tbcCantidad" minWidth="0.0" prefWidth="82.0" text="Cantidad" />
@@ -49,7 +49,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="776.0" prefWidth="715.0">
                <children>
                   <Label layoutX="181.0" layoutY="153.0" />
-                  <ImageView fitHeight="640.0" fitWidth="665.0" layoutX="32.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" styleClass="anchorPane" />
+                  <ImageView fitHeight="640.0" fitWidth="665.0" layoutX="32.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
                </children></AnchorPane>
         </content>
       </Tab>

@@ -18,7 +18,7 @@ public class LoginFX {
 	private PasswordField txtPassword;   //este es el que esconde las letras cuando ingresamos la contrasena
 	
 	@FXML
-	private Button btnOk;
+	private Button btnOK;
 	
 	@FXML
 	private Button btnCancel;
