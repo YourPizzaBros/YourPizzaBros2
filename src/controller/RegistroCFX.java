@@ -34,6 +34,7 @@ public class RegistroCFX {
 	
 
 	private String apellido;
+	private String nit;
 	
 	public String getNombreCliente() {
 		return nombreCliente;
@@ -185,6 +186,7 @@ public class RegistroCFX {
 		}
 		return apellido;
 	}
+<<<<<<< HEAD
 
 	 //tipo esto da pero ya no
 	
@@ -238,13 +240,15 @@ public class RegistroCFX {
 			MessageBox messageBox = new MessageBox();
 			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
 		}
+=======
+	 
+	
+	public String getNIT () {
+		System.out.println(nit);
+		return nit;
+>>>>>>> Andy
 		
-				
-
-}	
-	
-	*/
-	
+	}
 
 	@FXML
 	private void btnContinuar_Action() {
@@ -252,30 +256,24 @@ public class RegistroCFX {
 		
 		FormsOperations formsOperations = new FormsOperations();
 		
-		//ventaFX.loadCBXCategoria();     //esto estaba con producto
 		
-		//PreparedStatement preparedStatement = null;
-		//int rows = 0;
-		
-		
-		
-		//String nombre = null;
 			if (!txtNITCliente.getText().isEmpty()) {
 			
-				//nombre = buscarNombre(txtNombreCliente.getText());
+			
 			
 			boolean registrado = registrado();
+		
 			
 			if (registrado) {
-				//txtNITCliente.getText();
-			
+				
 			
 			
 			FXMLLoader fXMLLoader = formsOperations.OpenForm ("Pedir o pagar" , "/view/ElegirFX.fxml");
 			
 			ElegirFX ElegirFX = fXMLLoader.getController();
 			ElegirFX.setConnection(connection);
-			
+			System.out.println(txtNITCliente.getText());
+			ElegirFX.setclienteNIT(txtNITCliente.getText());
 			
 			
 			
@@ -295,18 +293,26 @@ public class RegistroCFX {
 
 	private boolean registrado() {
 		PreparedStatement preparedStatement = null;
+		ResultSet resultset = null;
 		boolean registrado= false;
 		
 			try {
-				preparedStatement = connection.query("insert into cliente(nit, nombre) values(?,?)");
+				preparedStatement = connection.query("select cliente.apellidoC from cliente "
+						+ "  where cliente.nit = ?" );
 				preparedStatement.setString(1, txtNITCliente.getText());
-				preparedStatement.setString(2, txtNombreCliente.getText());
-				preparedStatement.executeUpdate();
+			//	preparedStatement.setString(2, txtNombreCliente.getText());
+			 resultset =preparedStatement.executeQuery();
+				
+				if ( resultset.next()) {
+					registrado=true;
+					
+				}
+				
 		   
 			} catch (SQLException e) {
-				//MessageBox messageBox = new MessageBox();
-				//messageBox.message("Error en Consulta", e.getMessage());
-				registrado=true;
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Error en Consulta Registrado", e.getMessage());
+				
 			}
 		
 		return registrado;

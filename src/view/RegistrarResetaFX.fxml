@@ -15,19 +15,20 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="405.0" prefWidth="715.0">
                <children>
-                  <TextField fx:id="txtCodProducto" layoutX="274.0" layoutY="114.0" prefHeight="31.0" prefWidth="78.0" />
-                  <TextField fx:id="txtCodInsumo" layoutX="271.0" layoutY="167.0" prefHeight="31.0" prefWidth="84.0" />
-                  <Label layoutX="73.0" layoutY="119.0" prefHeight="21.0" prefWidth="130.0" text="Codigo Producto:" />
-                  <Label layoutX="80.0" layoutY="172.0" prefHeight="21.0" prefWidth="112.0" text="Codigo Insumo:" />
+                  <TextField fx:id="txtCodProducto" layoutX="265.0" layoutY="157.0" prefHeight="31.0" prefWidth="78.0" />
+                  <TextField fx:id="txtCodInsumo" layoutX="262.0" layoutY="109.0" prefHeight="31.0" prefWidth="84.0" />
+                  <Label layoutX="74.0" layoutY="162.0" prefHeight="21.0" prefWidth="130.0" text="Codigo Producto:" />
+                  <Label layoutX="83.0" layoutY="114.0" prefHeight="21.0" prefWidth="112.0" text="Codigo Insumo:" />
                   <Label layoutX="197.0" layoutY="11.0" prefHeight="53.0" prefWidth="341.0" text="Registrar Receta" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnRegistrarRR" layoutX="138.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnRegistrarRR_Action" prefHeight="37.0" prefWidth="153.0" text="Registrar" />
-                  <Button fx:id="btnCancelarRR" layoutX="391.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnCancelarRR_Action" prefHeight="37.0" prefWidth="153.0" text="Cancelar " />
-                  <TextField fx:id="txtCantidad" layoutX="271.0" layoutY="213.0" prefHeight="31.0" prefWidth="85.0" />
-                  <Label layoutX="110.0" layoutY="218.0" prefHeight="21.0" prefWidth="94.0" text="Cantidad: " />
+                  <Button fx:id="btnRegistrarRR" layoutX="62.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnRegistrarRR_Action" prefHeight="37.0" prefWidth="153.0" text="Registrar" />
+                  <Button fx:id="btnCancelarRR" layoutX="495.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnCancelarRR_Action" prefHeight="37.0" prefWidth="153.0" text="Cancelar " />
+                  <TextField fx:id="txtCantidad" layoutX="262.0" layoutY="207.0" prefHeight="31.0" prefWidth="85.0" />
+                  <Label layoutX="103.0" layoutY="212.0" prefHeight="21.0" prefWidth="94.0" text="Cantidad: " />
+                  <Button fx:id="btnActualizarReceta" layoutX="280.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnActualizarReceta_Action" prefHeight="43.0" prefWidth="164.0" text="Actualizar" />
                </children></AnchorPane>
       </content>
     </Tab>
