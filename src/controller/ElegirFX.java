@@ -47,12 +47,12 @@ public class ElegirFX {
 	@FXML
 	private void btnPedido_Action() {
 		
-		System.out.println("apreto boton pedido");
+		
 		FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenFormTab ("Formulario Venta" , "/view/VentaFX.fxml");
-		System.out.println("entro a ventea");
+		
 		VentaFX ventaFX = fXMLLoader.getController();
-		System.out.println("todo ok");
+		
 		
 		ventaFX.setConnection(connection);
 		ventaFX.loadcbxProducto();   

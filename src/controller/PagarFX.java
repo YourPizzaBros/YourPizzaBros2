@@ -66,11 +66,17 @@ public class PagarFX {
 	private void initialize() {
 		
 		// System.out.println(new PropertyValueFactory<>("nombre"));
-		colNIT.setCellValueFactory(new PropertyValueFactory<Pago, String>("INT"));
+	colNIT.setCellValueFactory(new PropertyValueFactory<Pago, String>("INT"));
 		colProducto.setCellValueFactory(new PropertyValueFactory<Pago, String>("producto"));
 		colPrecio.setCellValueFactory(new PropertyValueFactory<Pago, Integer>("precioUni"));
 		colCantidad.setCellValueFactory(new PropertyValueFactory<Pago, Integer>("cantidad"));
 		colTotProd.setCellValueFactory(new PropertyValueFactory<Pago, Integer>("totProd"));
+		
+		
+	
+	
+	
+		
 
 	}
 
@@ -85,10 +91,13 @@ public class PagarFX {
 			super();
 			this.INT = iNT;
 			this.producto = producto;
-			this.precioUni = precioUni;
+		  this.precioUni = precioUni;
 			this.cantidad = cantidad;
 			this.totProd = totProd;
 		}
+		
+			
+		
 
 		public String getINT() {
 			return INT;
@@ -138,7 +147,7 @@ public class PagarFX {
 		try {
 
 			final ObservableList<Pago> data = FXCollections.observableArrayList();
-			PreparedStatement preparedStatement = connection
+		PreparedStatement preparedStatement = connection
 					.query("select cliente.nit as NIT, producto.Nombre as Producto, producto.Precio as PrecioUni,\r\n" + 
 							"detalleventa.Cantidad as Cantidad, venta.Estado as Estado,\r\n" + 
 							"(producto.Precio*detalleventa.cantidad) as TotProd\r\n" + 
@@ -146,7 +155,14 @@ public class PagarFX {
 							"on cliente.NIT = venta.NIT inner join detalleventa\r\n" + 
 							"on detalleventa.codVenta = venta.codVenta inner join producto\r\n" + 
 							"on detalleventa.codProducto= producto.codProducto\r\n" + 
-							"where cliente.nit= ? and venta.Estado = \"SinPagar\"");
+							"where cliente.nit= ? and venta.Estado = \"SinPagar\" ");
+		/*	PreparedStatement preparedStatement = connection
+					.query("select " + 
+							"venta.Estado,\r\n" + 
+							"cliente.nit\r\n" + 
+							"from cliente inner join venta\r\n" + 
+							"on cliente.nit = venta.NIT\r\n" + 
+							"where cliente.nit= ? and venta.Estado = 'SinPagar' ");*/
 			preparedStatement.setString(1, this.getClienteNIT());
 			ResultSet resultSet = preparedStatement.executeQuery();
 			Pago pago = null;
@@ -161,35 +177,29 @@ public class PagarFX {
 						+ resultSet.getString("TotProd"));
 
 				pago = new Pago(resultSet.getString("NIT"), resultSet.getString("Producto"),
-						resultSet.getInt("PrecioUni"), resultSet.getInt("Cantidad"), resultSet.getInt("TotProd"));
-				// tableProductos.getItems().add(prod);
-				TOTAL = TOTAL + resultSet.getInt("TotProd");
+				resultSet.getInt("PrecioUni"), resultSet.getInt("Cantidad"), resultSet.getInt("TotProd"));
+			
+				tableProductos.getItems().add(prod);
+			TOTAL = TOTAL + resultSet.getInt("TotProd");
 
 				data.add(pago);
-				// tableProductos.setItems(data);
+				tableProductos.setItems(data);
 
 			}
 
 			tablePagar.getItems().addAll(data);
-			System.out.println("EL TOTAL ES: "+TOTAL);
-			lblTotal.setText("EL TOTAL ES: "+TOTAL.toString());
-			//total();
+		System.out.println("EL TOTAL ES: "+TOTAL);
+		lblTotal.setText("EL TOTAL ES: "+TOTAL.toString());
+		//total();
 			
 		} catch (Exception exc) {
 			exc.printStackTrace();
 		}
 		
 		
-		
 
 	}
 
-	
-	
-	
-	
-	
-	
 	
 	public void setConnection1(controller.Connection connection) {
 		this.connection = (Connection) connection;
@@ -199,12 +209,39 @@ public class PagarFX {
 	@FXML
 	private void btnPagar_Action() {
 		try {
+			ResultSet resultSetb=null;
+			PreparedStatement preparedStatement22 = connection.query("select \r\n" + 
+					"	venta.id_mesa " + 
+					"			from \r\n" + 
+					"			venta\r\n" + 
+					"			where venta.NIT = ? && venta.Estado = 'SinPagar' ");
+			preparedStatement22.setString(1, this.getClienteNIT());
+			resultSetb=preparedStatement22.executeQuery();
+		
+			int num= resultSetb.getInt("id_mesa");
+			 System.out.println(num + "antes" );
+			 
 			PreparedStatement preparedStatement = connection.query("update venta\r\n" + "inner join cliente on \r\n"
-					+ "venta.NIT = cliente.nit\r\n" + " set venta.Estado= \"Pagado\"\r\n"
+					+ "venta.NIT = cliente.nit " + " set venta.Estado= \"Pagado\" "
 					+ " where venta.Estado = \"SinPagar\" and cliente.nit= ?");
 			preparedStatement.setString(1, this.getClienteNIT());
-			ResultSet resultSet=preparedStatement.executeQuery();
-			System.out.println(resultSet.getString("venta.estado"));
+			 preparedStatement.executeUpdate();
+			//System.out.println(resultSet.getString("venta.estado"));
+			
+			
+		 System.out.println(num + "despues" );
+				PreparedStatement preparedStatement2 = connection.query( "update mesa  " + 
+						" set estado= 'Desocupado'  " + 
+						" where mesa.id_Mesa=? " );
+			//preparedStatement2.setInt(1,  resultSetb.getInt("id_mesa") );
+				preparedStatement2.setInt(1,  num);
+	    	 preparedStatement2.executeUpdate();
+	    	 
+	    	
+				
+			
+			
+			
 		} catch (Exception exc) {
 			exc.printStackTrace();
 		}

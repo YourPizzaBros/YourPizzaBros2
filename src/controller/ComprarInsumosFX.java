@@ -66,6 +66,22 @@ public class ComprarInsumosFX {
 				
 				
 					guardarDetalleCompra(   getIdRelacion(), convertToDate(dtpFecha.getValue()),   txtCantidad.getText());
+				
+				//preparedStatement2.setInt(1,  resultSetb.getInt("id_mesa") );
+					
+					try {
+						PreparedStatement preparedStatement2 = connection.query( "update insumo  " + 
+								" set cantidad=  ? " + 
+								" where insumo.nombre =? " );
+						preparedStatement2.setString(1,  txtCantidad.getText());
+						preparedStatement2.setString(2, cbxInsumo.getValue().getNombre()  );
+						 preparedStatement2.executeUpdate();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		    	
+		    	 
 					cleanScreen(); 	
 				}
 		
@@ -101,7 +117,7 @@ public class ComprarInsumosFX {
 	
 	public void loadcbxInsumo() {
 		try {
-			cbxProveedor.getItems().removeAll();
+			//cbxProveedor.getItems().removeAll();
 			PreparedStatement preparedStatement = connection.query("Select * from insumo");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			InsumoCBX insumoCBX = null;
