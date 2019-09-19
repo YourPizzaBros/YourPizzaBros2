@@ -66,7 +66,23 @@ public class ComprarInsumosFX {
 				
 				
 					guardarDetalleCompra(   getIdRelacion(), convertToDate(dtpFecha.getValue()),   txtCantidad.getText());
-							
+				
+				//preparedStatement2.setInt(1,  resultSetb.getInt("id_mesa") );
+					
+					try {
+						PreparedStatement preparedStatement2 = connection.query( "update insumo  " + 
+								" set cantidad=  ? " + 
+								" where insumo.nombre =? " );
+						preparedStatement2.setString(1,  txtCantidad.getText());
+						preparedStatement2.setString(2, cbxInsumo.getValue().getNombre()  );
+						 preparedStatement2.executeUpdate();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		    	
+		    	 
+					cleanScreen(); 	
 				}
 		
 		else {
@@ -275,14 +291,17 @@ class ProveedorCBX extends model.Proveedor {
 private void cleanScreen() {
 	now();
 
-	//cbxInsumo.setValue(null);
-	//cbxProveedor.setValue(null);
+	cbxInsumo.setValue(null);
+	cbxProveedor.setValue(null);
 	txtCantidad.setText("");
 
 }
 public void now() {
 
 	dtpFecha.setValue(LocalDate.now());
+	
+	
+	
 }
 
 private java.util.Date convertToDate(LocalDate localDate) {

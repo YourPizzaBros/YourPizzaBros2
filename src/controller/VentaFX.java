@@ -148,6 +148,31 @@ public class VentaFX {
 					guardarDetalleVenta(numeroVenta, detalleTBV.getProductoCBX().getCodigoProducto(),
 							detalleTBV.getCantidad(), detalleTBV.getProductoCBX().getPrecio());
 				}
+				
+							try {
+					PreparedStatement preparedStatement = connection.query( "update mesa " + 
+							"set estado= 'ocupado' " + 
+							"where mesa.id_Mesa=?" );
+				
+					preparedStatement.setString(1,  txtMesa.getText()  );
+				 preparedStatement.executeUpdate();
+					
+				
+				} catch (SQLException e) {
+					MessageBox messageBox = new MessageBox();
+					messageBox.message("Error en Consulta Mesa", e.getMessage());
+					
+				}
+							
+							
+							
+							
+							
+				
+				
+				
+				
+				
 				cleanScreen(); 
 			}
 		} else {
@@ -162,7 +187,11 @@ public class VentaFX {
 		boolean registrado= false;
 		
 			try {
+<<<<<<< HEAD
 				preparedStatement = connection.query("select cliente.apellidoC from cliente "
+=======
+				preparedStatement = connection.queryGeneratedKeys("select cliente.apellidoC from cliente "
+>>>>>>> Andy
 						+ "  where cliente.nit = ?" );
 				preparedStatement.setString(1, txtNIT.getText());
 		
