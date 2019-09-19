@@ -85,19 +85,9 @@ public class ComprarInsumosFX {
 	
 	@FXML
 	private void btnCargarP_Action() {
-		
-		
 		if(cbxInsumo.getValue() != null) {
-			
-			int codigoInsumo= cbxInsumo.getValue().getCodigoInsumo();
-			PreparedStatement preparedStatement = null;
-			ResultSet resultset = null;
-			
 			cbxProveedor.getItems().clear();
-			
 			this.loadcbxProveedor();
-			
-			
 		}
 		
 		else {
@@ -108,12 +98,6 @@ public class ComprarInsumosFX {
 		}
 		
 	}
-	
-
-	
-	
-
-	
 	
 	public void loadcbxInsumo() {
 		try {
