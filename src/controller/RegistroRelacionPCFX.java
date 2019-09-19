@@ -90,6 +90,27 @@ public class RegistroRelacionPCFX {
 	
 	
 
+	/*
+	 * public void loadcbxProveedor() { try { PreparedStatement preparedStatement =
+	 * connection.query("Select * from proveedor"); ResultSet resultSet =
+	 * preparedStatement.executeQuery(); ProveedorCBX provCBX = null;
+	 * 
+	 * while (resultSet.next()) {
+	 * 
+	 * productoCBX = new ProductoCBX(resultSet.getInt("codProducto"),
+	 * resultSet.getString("nombre"), resultSet.getDouble("precio"),
+	 * resultSet.getString("descripcion"), resultSet.getString("tamano"),
+	 * resultSet.getInt("cantidad")); cbxNombreProducto.getItems().add(productoCBX);
+	 * 
+	 * provCBX = new ProveedorCBX(resultSet.getInt("NITProveedor"),
+	 * resultSet.getString("NombreP"), resultSet.getString("Telefono"),
+	 * resultSet.getString("Direccion")); cbxNombreP.getItems().add(provCBX);
+	 * 
+	 * }
+	 * 
+	 * } catch (SQLException e) { MessageBox messageBox = new MessageBox();
+	 * messageBox.message("Error", e.getMessage()); } }
+	 */
 	public void loadcbxProveedor() {
 		try {
 			PreparedStatement preparedStatement = connection.query("Select * from proveedor");
@@ -97,16 +118,9 @@ public class RegistroRelacionPCFX {
 			ProveedorCBX provCBX = null;
 
 			while (resultSet.next()) {
-<<<<<<< HEAD
-				productoCBX = new ProductoCBX(resultSet.getInt("codProducto"), resultSet.getString("nombre"),
-						resultSet.getDouble("precio"), resultSet.getString("descripcion"),
-						resultSet.getString("tamano"), resultSet.getInt("cantidad"));
-				cbxNombreProducto.getItems().add(productoCBX);
-=======
 				provCBX = new ProveedorCBX(resultSet.getInt("NITProveedor"), resultSet.getString("NombreP"),
 						resultSet.getString("Telefono"), resultSet.getString("Direccion"));
 				cbxNombreP.getItems().add(provCBX);
->>>>>>> Andy
 			}
 
 		} catch (SQLException e) {
@@ -114,7 +128,6 @@ public class RegistroRelacionPCFX {
 			messageBox.message("Error", e.getMessage());
 		}
 	}
-	
 	
 	
 	
@@ -148,14 +161,12 @@ public class RegistroRelacionPCFX {
 
 	class ProveedorCBX extends model.Proveedor {
 
-<<<<<<< HEAD
-		public ProductoCBX(int codigoProducto, String nombre, Double precio, String descripción, String tamano, int cantidad) {
-			super(codigoProducto, nombre, precio, descripción, tamano, cantidad);
-=======
+
+		
 		public ProveedorCBX(int codigoC, String nombreC, String TelC, String direccionC) {
 			super(codigoC, nombreC, TelC, direccionC);
 			// TODO Auto-generated constructor stub
->>>>>>> Andy
+
 		}
 
 

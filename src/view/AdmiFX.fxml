@@ -4,11 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdmiFX">
-=======
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdmiFX">
->>>>>>> Andy
    <children>
       <Button fx:id="btnRegistrarProductos" layoutX="16.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnRegistrarProductos_Action" prefHeight="54.0" prefWidth="271.0" text="Registrar Productos">
          <font>
@@ -61,11 +57,6 @@
          </font>
       </Button>
       <Button fx:id="btnVerMesas" layoutX="312.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnVerMesas_Action" text="Ver Mesas">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnRegistrarRelacion" layoutX="64.0" layoutY="561.0" mnemonicParsing="false" onAction="#btnRegistrarRelacion_Action" prefHeight="54.0" prefWidth="503.0" text="Registrar Relaciones Proveedor e Insumos">
          <font>
             <Font size="25.0" />
          </font>
