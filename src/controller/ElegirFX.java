@@ -12,9 +12,11 @@ public class ElegirFX {
 	@FXML
 	public Button btnPedido;
 	
+
 	private RegistroCFX registrocfx;
 	
 	private String clienteNIT;
+
 	@FXML
 	public Button btnCuenta;
 	
@@ -23,13 +25,14 @@ public class ElegirFX {
 	private void initialize() {
 		
 	}
-	public void setclienteNIT(String nit) {
-		
-		this.clienteNIT=nit;
-		
+	
+	
+	public String getClienteNIT() {
+		return clienteNIT;
 	}
-	
-	
+	public void setClienteNIT(String string) {
+		this.clienteNIT = string;
+	}
 	public Connection getConnection() {
 		return connection;
 	}
@@ -63,12 +66,14 @@ public class ElegirFX {
 	@FXML
 	private void btnCuenta_Action() {
 		
-		/*
+		
 		FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Formulario Pagar" , "/view/PagarFX.fxml");
 		PagarFX pagarFX = fXMLLoader.getController();
 		pagarFX.setConnection(connection);
-		pagarFX.loadCBXCategoria();*/  //aqui tiene que venir con pagar
+		pagarFX.setClienteNIT(clienteNIT);
+		 //aqui tiene que venir con pagar
 	}
+
 	
 }

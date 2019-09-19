@@ -39,6 +39,15 @@ public class AdmiFX {
 	private Button btnRegistrarRelacion;
 	@FXML
 	private Button btnRegistrarProductos;
+	@FXML
+	private Button btnVerDetCompra;
+	@FXML
+	private Button btnVerDetVenta;
+	@FXML
+	private Button btnVerReceta;
+	@FXML
+	private Button btnVerMesas;
+	
 	
 	
 	@FXML
@@ -102,7 +111,6 @@ public class AdmiFX {
 		
 		
 	}
-	
 	@FXML
 	private void btnRegistrarProductos_Action() 
 	{
@@ -112,7 +120,6 @@ public class AdmiFX {
 		RegistroProdFX.setConnection(connection);
 		
 	}
-	
 	@FXML
 	private void btnRegistrarMesa_Action() 
 	{
@@ -121,6 +128,40 @@ public class AdmiFX {
 		RegistroMesaFX RegistroMFX = fXMLLoader.getController();
 		RegistroMFX.setConnection(connection);
 		
+	}
+	@FXML
+	private void btnVerDetVenta_Action() 
+	{
+		FormsOperations formsOperations = new FormsOperations();
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Mostrar Detalle Venta" , "/view/DetalleVentaFX.fxml");
+		DetalleVentaFX detalleVentaFX = fXMLLoader.getController();
+		detalleVentaFX.setConnection(connection);
+	}
+	@FXML
+	private void btnVerDetCompra_Action() 
+	{
+		FormsOperations formsOperations = new FormsOperations();
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Mostrar Detalle Compra" , "/view/DetalleCompraFX.fxml");
+		DetalleCompraFX detalleCompraFX = fXMLLoader.getController();
+		detalleCompraFX.setConnection(connection);
+	}
+	@FXML
+	private void btnVerReceta_Action() 
+	{
+		
+		  FormsOperations formsOperations = new FormsOperations(); FXMLLoader
+		  fXMLLoader = formsOperations.OpenForm ("Mostrar Receta" ,"/view/MostrarRecetaFX.fxml"); 
+		  MostrarRecetaFX mostrarRecetaFX =fXMLLoader.getController();
+		  mostrarRecetaFX.setConnection(connection);
+		 
+	}
+	@FXML
+	private void btnVerMesas_Action() 
+	{
+		FormsOperations formsOperations = new FormsOperations();
+		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Mostrar Mesas" , "/view/MostrarMesasFX.fxml");
+		MostrarMesasFX mostrarMesasFX = fXMLLoader.getController();
+		mostrarMesasFX.setConnection(connection);
 	}
 	
 	

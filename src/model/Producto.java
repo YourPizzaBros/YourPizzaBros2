@@ -8,13 +8,13 @@ public class Producto {
 	private String tamano;
 	private int cantidadTotal;   //anadiendo esto ya que no estabas
 	
-	public Producto (int codigoProducto, String nombre, Double precio, String descripción, String tamano) {
+	public Producto (int codigoProducto, String nombre, Double precio, String descripción, String tamano, int cantidadT) {
 		this.codigoProducto = codigoProducto;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.descripción = descripción;
 		this.tamano= tamano;
-		this.cantidadTotal=0;
+		this.cantidadTotal= cantidadT;
 	}
 	public int getCodigoProducto() {
 		return codigoProducto;

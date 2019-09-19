@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="480.0" prefWidth="527.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.RegistroProductoFX">
+<AnchorPane prefHeight="480.0" prefWidth="527.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroProductoFX">
    <children>
-      <Label layoutX="152.0" layoutY="35.0" prefHeight="59.0" prefWidth="233.0" text="Registrar Producto">
+      <Label layoutX="152.0" layoutY="35.0" prefHeight="59.0" prefWidth="233.0" text="Registrar Producto" textFill="WHITE">
          <font>
             <Font size="27.0" />
          </font>
@@ -17,22 +16,22 @@
       <TextField fx:id="txtNombreProducto" layoutX="232.0" layoutY="116.0" prefHeight="25.0" prefWidth="260.0" />
       <TextField fx:id="txtPrecioUnidadP" layoutX="232.0" layoutY="171.0" prefHeight="25.0" prefWidth="260.0" />
       <TextField fx:id="txtDescripcion" layoutX="225.0" layoutY="241.0" prefHeight="25.0" prefWidth="260.0" />
-      <Label layoutX="48.0" layoutY="111.0" text="Nombre: ">
+      <Label layoutX="48.0" layoutY="111.0" text="Nombre: " textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="21.0" layoutY="168.0" text="Precio Unidad : ">
+      <Label layoutX="21.0" layoutY="168.0" text="Precio Unidad : " textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="238.0" text="Descripción : ">
+      <Label layoutX="26.0" layoutY="238.0" text="Descripción : " textFill="#f8f8f8">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="289.0" text="Tamaño:  ">
+      <Label layoutX="43.0" layoutY="289.0" text="Tamaño:  " textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>

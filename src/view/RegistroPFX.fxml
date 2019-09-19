@@ -8,22 +8,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistroPFX">
    <children>
-      <Label layoutX="94.0" layoutY="110.0" text="Nombre : ">
+      <Label layoutX="94.0" layoutY="110.0" text="Nombre : " textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="99.0" layoutY="213.0" text="Direccion :">
+      <Label layoutX="99.0" layoutY="213.0" text="Direccion :" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="95.0" layoutY="164.0" text="Telefono: ">
+      <Label layoutX="95.0" layoutY="164.0" text="Telefono: " textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="166.0" layoutY="29.0" text="Registro Proveedor">
+      <Label layoutX="166.0" layoutY="29.0" text="Registro Proveedor" textFill="WHITE">
          <font>
             <Font size="30.0" />
          </font>
@@ -34,7 +34,7 @@
       <Button fx:id="btnRegistrarProveedor" layoutX="117.0" layoutY="331.0" mnemonicParsing="false" onAction="#btnRegistrarProveedor_Action" text="Registrar" />
       <Button fx:id="btnEliminarP" layoutX="442.0" layoutY="331.0" mnemonicParsing="false" onAction="#btnEliminarProveedor_Action" text="Eliminar" />
       <Button fx:id="btnActualizarP" layoutX="282.0" layoutY="331.0" mnemonicParsing="false" onAction="#btnActualizarProveedor_Action" text="Actualizar" />
-      <Label layoutX="94.0" layoutY="74.0" text="NIT : ">
+      <Label layoutX="94.0" layoutY="74.0" text="NIT : " textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>

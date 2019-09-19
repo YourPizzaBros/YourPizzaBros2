@@ -3,8 +3,6 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import controller.RegistroRelacionPCFX.InsumoCBX;
-import controller.RegistroRelacionPCFX.ProveedorCBX;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -90,6 +88,27 @@ public class RegistroRelacionPCFX {
 	
 	
 
+	/*
+	 * public void loadcbxProveedor() { try { PreparedStatement preparedStatement =
+	 * connection.query("Select * from proveedor"); ResultSet resultSet =
+	 * preparedStatement.executeQuery(); ProveedorCBX provCBX = null;
+	 * 
+	 * while (resultSet.next()) {
+	 * 
+	 * productoCBX = new ProductoCBX(resultSet.getInt("codProducto"),
+	 * resultSet.getString("nombre"), resultSet.getDouble("precio"),
+	 * resultSet.getString("descripcion"), resultSet.getString("tamano"),
+	 * resultSet.getInt("cantidad")); cbxNombreProducto.getItems().add(productoCBX);
+	 * 
+	 * provCBX = new ProveedorCBX(resultSet.getInt("NITProveedor"),
+	 * resultSet.getString("NombreP"), resultSet.getString("Telefono"),
+	 * resultSet.getString("Direccion")); cbxNombreP.getItems().add(provCBX);
+	 * 
+	 * }
+	 * 
+	 * } catch (SQLException e) { MessageBox messageBox = new MessageBox();
+	 * messageBox.message("Error", e.getMessage()); } }
+	 */
 	public void loadcbxProveedor() {
 		try {
 			PreparedStatement preparedStatement = connection.query("Select * from proveedor");
@@ -107,7 +126,6 @@ public class RegistroRelacionPCFX {
 			messageBox.message("Error", e.getMessage());
 		}
 	}
-	
 	
 	
 	
@@ -136,14 +154,18 @@ public class RegistroRelacionPCFX {
 		txtCodInsumo.setText(" ");
 		txtCodigoP.setText(" ");
 		txtCodigoI.setText(" ");
+		txtPrecio.setText(" ");
 		
 	}
 
 	class ProveedorCBX extends model.Proveedor {
 
+
+		
 		public ProveedorCBX(int codigoC, String nombreC, String TelC, String direccionC) {
 			super(codigoC, nombreC, TelC, direccionC);
 			// TODO Auto-generated constructor stub
+
 		}
 
 

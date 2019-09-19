@@ -1,11 +1,12 @@
 package controller;
 
 
+
+import javafx.fxml.FXML;
+//import javafx.scene.control.Label;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -27,14 +28,29 @@ public class RegistroCFX {
 	private TextField txtNITCliente;
 	@FXML
 	private TextField txtNombreCliente;
+	
+	private String nombreCliente;
+	
+	
 
 	private String apellido;
 	private String nit;
 	
+	public String getNombreCliente() {
+		return nombreCliente;
+	}
+
+	public void setNombreCliente(String nombreCliente) {
+		this.nombreCliente = nombreCliente;
+	}
+
+	
+
+
+
 	@FXML
 	private Button btnContinuar;
 	
-
 
 	public Connection getConnection() {
 		return connection;
@@ -55,7 +71,7 @@ public class RegistroCFX {
 				preparedStatement.setString(1, txtNITCliente.getText());
 				preparedStatement.setString(2, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
-		
+
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());
@@ -160,9 +176,7 @@ public class RegistroCFX {
 		}
 		return apellido;
 	}
-	 
-	
-	
+
 
 	@FXML
 	private void btnContinuar_Action() {
@@ -187,7 +201,7 @@ public class RegistroCFX {
 			ElegirFX ElegirFX = fXMLLoader.getController();
 			ElegirFX.setConnection(connection);
 		
-			ElegirFX.setclienteNIT(txtNITCliente.getText());
+			ElegirFX.setClienteNIT(txtNITCliente.getText());
 			
 			
 			
@@ -203,7 +217,9 @@ public class RegistroCFX {
 		
 				
 
-}	
+
+	
+	}
 	private boolean registrado() {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultset = null;
@@ -230,9 +246,7 @@ public class RegistroCFX {
 		
 		return registrado;
 	}
-	
-
-	}
 
 
+}
 

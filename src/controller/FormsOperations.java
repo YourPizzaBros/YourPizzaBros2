@@ -2,9 +2,11 @@ package controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TabPane;
-import javafx.scene.image.Image;
 
+
+import javafx.scene.control.TabPane;
+
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -17,8 +19,9 @@ public class FormsOperations {
 			fXMLLoader = new FXMLLoader(getClass().getResource(url));
 			AnchorPane root = fXMLLoader.load();
 
+	        root.setId("root");
 
-			//root.setId("root");
+
 
 			Stage stage = new Stage();
             Scene scene = new Scene(root,root.getPrefWidth(),root.getPrefHeight());
@@ -26,10 +29,7 @@ public class FormsOperations {
 			stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle(title);
 
-
             stage.getIcons().add (new Image ("/image/pizzaIcon.png"));
-            //scene.getStylesheets().addAll(this.getClass().getResource("application.css").toExternalForm());
-
            	stage.setScene(scene);
 			stage.show();
 		} catch(Exception e) {
@@ -48,6 +48,7 @@ public class FormsOperations {
             stage.resizableProperty().setValue(resizable);
 			stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle(title);
+            stage.getIcons().add (new Image ("/image/pizzaIcon.png"));
            	stage.setScene(scene);
 			stage.show();
 		} catch(Exception e) {
