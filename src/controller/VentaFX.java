@@ -162,7 +162,7 @@ public class VentaFX {
 		boolean registrado= false;
 		
 			try {
-				preparedStatement = connection.query("select cliente.apellidoC from cliente "
+				preparedStatement = connection.query("select .apellidoC from cliente "
 						+ "  where cliente.nit = ?" );
 				preparedStatement.setString(1, txtNIT.getText());
 		
@@ -205,7 +205,7 @@ public class VentaFX {
 			
 			preparedStatement = connection.queryGeneratedKeys("insert into Venta(nit,fecha, estado ,id_mesa) " + "values(?,?, 'SinPagar' ,?)");
 		
-			preparedStatement.setDate(2, new java.sql.Date(fecha.getTime()));
+			preparedStatement.setDate(2, new java.sql.Date(fecha.getTime())  );
 			preparedStatement.setString(1, txtNIT.getText());
 			preparedStatement.setString(3, txtMesa.getText());
 			

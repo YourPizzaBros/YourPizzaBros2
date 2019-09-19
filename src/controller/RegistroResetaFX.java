@@ -44,7 +44,8 @@ public class RegistroResetaFX {
 		@FXML
 		private Button btnCancelarRR;
 		
-		
+		@FXML
+		private Button btnActualizarReceta;
 		
 		
 		
@@ -237,7 +238,7 @@ public class RegistroResetaFX {
 
 				
 				while (resultSet.next()) {
-					insumoCBX = new InsumoCBX(resultSet.getInt("codInsumo"), resultSet.getString("nombre"), resultSet.getString("descripcion"));
+					insumoCBX = new InsumoCBX(resultSet.getInt("codInsumo"), resultSet.getString("nombre"), resultSet.getString("descripcion") ,resultSet.getInt("cantidad")     );
 					cbxNombreInsumo.getItems().add(insumoCBX);
 				}
 
@@ -280,14 +281,14 @@ public class RegistroResetaFX {
 		
 		class InsumoCBX extends model.Insumo {
 
-			public InsumoCBX(int codigoProducto, String nombre, String descripción) {
-				super(codigoProducto, nombre, descripción);
+			public InsumoCBX(int codigoProducto, String nombre, String descripción,int cantidad) {
+				super(codigoProducto, nombre, descripción,cantidad);
 				// TODO Auto-generated constructor stub
 			}
 
 			@Override
 			public String toString() {
-				return getNombre() ;
+				return getNombre()  ;
 			}
 		}
 

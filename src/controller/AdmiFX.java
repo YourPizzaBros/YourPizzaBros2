@@ -36,6 +36,8 @@ public class AdmiFX {
 	@FXML
 	private Button btnRegistrarMesa;
 	@FXML
+	private Button btnRegistrarRelacion;
+	@FXML
 	private Button btnRegistrarProductos;
 	@FXML
 	private Button btnVerDetCompra;
@@ -60,11 +62,12 @@ public class AdmiFX {
 	@FXML
 	private void btnComprarInsumos_Action() 
 	{
-/*		FormsOperations formsOperations = new FormsOperations();
+	  FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Comprar Insumo" , "/view/CompraFX.fxml");
-		CompraFX compraFX = fXMLLoader.getController();
+		ComprarInsumosFX compraFX = fXMLLoader.getController();
 		compraFX.setConnection(connection);
-		*/
+		compraFX.loadcbxInsumo();
+		
 	}
 	@FXML
 	private void btnRegistrarProveedor_Action() 
@@ -73,6 +76,18 @@ public class AdmiFX {
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Registrar Proveedores" , "/view/RegistroPFX.fxml");
 		RegistroPFX RegistroPFX = fXMLLoader.getController();
 		RegistroPFX.setConnection(connection);
+		
+	}
+	
+	@FXML
+	private void btnRegistrarRelacion_Action() 
+	{
+		FormsOperations formsOperations = new FormsOperations();
+		FXMLLoader fXMLLoader = formsOperations.OpenFormTab ("Registrar Relacion" , "/view/RegistrarRelacionPCFX.fxml");
+		RegistroRelacionPCFX RegistroPCFX = fXMLLoader.getController();
+		RegistroPCFX.setConnection(connection);
+		RegistroPCFX.loadcbxInsumo();
+		RegistroPCFX.loadcbxProveedor();
 		
 	}
 	@FXML

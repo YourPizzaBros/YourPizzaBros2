@@ -3,9 +3,8 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import controller.RegistroResetaFX.InsumoCBX;
-import controller.RegistroResetaFX.ProductoCBX;
+import controller.RegistroRelacionPCFX.InsumoCBX;
+import controller.RegistroRelacionPCFX.ProveedorCBX;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -21,68 +20,47 @@ public class RegistroRelacionPCFX {
 	@FXML
 	private TabPane tbpPanel;
 	@FXML
-	private Tab tabReceta;
+	private Tab tabRelacion;
 	@FXML
 	private Tab tabBC;
 	
 	@FXML
-	private TextField txtCodProducto;  //pp
+	private TextField txtCodInsumo;  //pp
 	@FXML
-	private TextField txtCodInsumo; //pp
-	
-	@FXML
-	private Button btnRegistrarRR;
-	@FXML
-	private Button btnCancelarRR;
-	
-	
-	
-	
+	private TextField txtCodProv; //pp
 	
 	@FXML
-	private TextField txtCodigoProducto;//sp
+	private Button btnRegistrar;
 	@FXML
-	private TextField txtCodigoInsumo;//sp
+	private Button btnCancelar;
 	
 	@FXML
-	private ComboBox <ProductoCBX> cbxNombreProducto;
+	private Button btnActualizar;
+	
+	@FXML
+	private TextField txtPrecio;
+	
+	
+	@FXML
+	private TextField txtCodigoI;//sp
+	@FXML
+	private TextField txtCodigoP;//sp
+	
+	@FXML
+	private ComboBox <ProveedorCBX> cbxNombreP;
 	
 	/*@FXML
 	private ComboBox <ProductoTamanoCBX> cbxTamanoProducto;*/
 	
 	@FXML
-	private ComboBox <InsumoCBX> cbxNombreInsumo;
+	private ComboBox <InsumoCBX> cbxNombreI;
 	
 	@FXML
-	private Button btnBuscarProducto;
+	private Button btnBuscarP;
 	@FXML
-	private Button btnBuscarInsumo;
-	
-	@FXML
-	private TextField txtCantidad;
+	private Button btnBuscarI;
 	
 	
-	/*@FXML
-	private TableView<DetalleTBV> tbvDetalle;
-	@FXML
-	private TableColumn<DetalleTBV, String> tbcProducto;
-	@FXML
-	private TableColumn<DetalleTBV, String> tbcCantidad;
-	*/
-	
-	/*
-	@FXML
-	private Button btnAñadirProducto;
-	@FXML
-	private Button btnEditarProducto;
-	@FXML
-	private Button btnRemoverProducto;
-	@FXML
-	private Button btnGuardarVenta;
-	@FXML
-	private Button btnCancelarVenta;
-	
-	*/
 	
 	
 	
@@ -95,98 +73,12 @@ public class RegistroRelacionPCFX {
 	}
 
 	
-	/*@FXML
-	private void txtNIT_Action() {
-		String nombre = null;
-		if (!txtNIT.getText().isEmpty()) {
-			nombre = buscarNombre(txtNIT.getText());
-			if (nombre != null) {
-				txtNombre.setText(nombre);
-			} else {
-				txtNITCliente.setText(txtNIT.getText());
-				tbpPanel.getSelectionModel().select(tabCliente);
-			}
-
-		} else {
-			MessageBox messageBox = new MessageBox();
-			messageBox.message("NIT", "El Campo de NIT no puede estar vacio");
-		}
-	}*/
-/*
-	@FXML
-	private void btnAñadirProducto_Action() {
-		
-		if (cbxProducto.getValue() != null && !txtCantidad.getText().isEmpty()) { // Se verifica si ambos no estan
-																					// vacios
-			DetalleTBV detalleTBV = new DetalleTBV(cbxProducto.getValue(), Integer.parseInt(txtCantidad.getText()));
-			if (!buscarDetalle(detalleTBV)) {
-				// Añade el objeto detalleTBV en la tabla
-				tbvDetalle.getItems().add(detalleTBV);
-				// Despues de añadir, ambos cambian a estado vacio
-				cbxProducto.setValue(null);
-				txtCantidad.setText("");
-			}else {
-				MessageBox messageBox = new MessageBox();
-				messageBox.message("Información", "El producto se encuentra en el detalle");
-			}
-
-		}
-	}*/
-/*
-	private boolean buscarDetalle(DetalleTBV detalleTBV) {
-		boolean resp = false;
-		for (DetalleTBV item : tbvDetalle.getItems()) {
-			if (item.getProductoCBX().equals(detalleTBV.getProductoCBX())) {
-				resp = true;
-				break;
-			}
-		}
-		return resp;
-	}*/
-
-	/*
-	@FXML
-	private void btnRemoverProducto_Action() {
-		DetalleTBV selectedItem = tbvDetalle.getSelectionModel().getSelectedItem();
-		tbvDetalle.getItems().remove(selectedItem);
-	}*/
-
-	
-	
 
 	@FXML
-	private void btnCancelarRR_Action() {
+	private void btnCancelar_Action() {
 		cleanScreen(); // Limpiamos la pantalla
 	}
-/*
-	private String buscarNombre(String NIT) {
-		String nombre = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
 
-		try {
-			preparedStatement = connection.query("select nombre from cliente " + "where nit = ?");
-			preparedStatement.setString(1, NIT);
-			resultSet = preparedStatement.executeQuery();
-			if (resultSet.next()) {
-				nombre = resultSet.getString("nombre");
-			}
-		} catch (SQLException e) {
-			MessageBox messageBox = new MessageBox();
-			messageBox.message("Error Cliente", e.getMessage());
-		}
-		return nombre;
-	}*/
-
-	/*
-	 * Convierte un valor LocalDate (DatePicker) en java.util.Date
-	 */
-	/*private java.util.Date convertToDate(LocalDate localDate) {
-		return Date.from(localDate.atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
-	}*/
-
-	
-	
 
 	public Connection getConnection() {
 		return connection;
@@ -198,17 +90,23 @@ public class RegistroRelacionPCFX {
 	
 	
 
-	public void loadcbxProducto() {
+	public void loadcbxProveedor() {
 		try {
-			PreparedStatement preparedStatement = connection.query("Select * from producto");
+			PreparedStatement preparedStatement = connection.query("Select * from proveedor");
 			ResultSet resultSet = preparedStatement.executeQuery();
-			ProductoCBX productoCBX = null;
+			ProveedorCBX provCBX = null;
 
 			while (resultSet.next()) {
+<<<<<<< HEAD
 				productoCBX = new ProductoCBX(resultSet.getInt("codProducto"), resultSet.getString("nombre"),
 						resultSet.getDouble("precio"), resultSet.getString("descripcion"),
 						resultSet.getString("tamano"), resultSet.getInt("cantidad"));
 				cbxNombreProducto.getItems().add(productoCBX);
+=======
+				provCBX = new ProveedorCBX(resultSet.getInt("NITProveedor"), resultSet.getString("NombreP"),
+						resultSet.getString("Telefono"), resultSet.getString("Direccion"));
+				cbxNombreP.getItems().add(provCBX);
+>>>>>>> Andy
 			}
 
 		} catch (SQLException e) {
@@ -228,8 +126,8 @@ public class RegistroRelacionPCFX {
 
 			
 			while (resultSet.next()) {
-				insumoCBX = new InsumoCBX(resultSet.getInt("codInsumo"), resultSet.getString("nombre"), resultSet.getString("descripcion"));
-				cbxNombreInsumo.getItems().add(insumoCBX);
+				insumoCBX = new InsumoCBX(resultSet.getInt("codInsumo"), resultSet.getString("nombre"), resultSet.getString("descripcion"),resultSet.getInt("cantidad"));
+				cbxNombreI.getItems().add(insumoCBX);
 			}
 
 		} catch (SQLException e) {
@@ -239,28 +137,34 @@ public class RegistroRelacionPCFX {
 	}
 
 
-	/*public void now() {
-
-		dtpFecha.setValue(LocalDate.now());
-	}*/
-
 	private void cleanScreen() {
 		//now();
-		txtCodProducto.setText("");
-		txtCodInsumo.setText("");
+		txtCodProv.setText(" ");
+		txtCodInsumo.setText(" ");
+		txtCodigoP.setText(" ");
+		txtCodigoI.setText(" ");
 		
 	}
 
-	class ProductoCBX extends model.Producto {
+	class ProveedorCBX extends model.Proveedor {
 
+<<<<<<< HEAD
 		public ProductoCBX(int codigoProducto, String nombre, Double precio, String descripción, String tamano, int cantidad) {
 			super(codigoProducto, nombre, precio, descripción, tamano, cantidad);
+=======
+		public ProveedorCBX(int codigoC, String nombreC, String TelC, String direccionC) {
+			super(codigoC, nombreC, TelC, direccionC);
+			// TODO Auto-generated constructor stub
+>>>>>>> Andy
 		}
+
+
+		
 
 		
 		@Override
 		public String toString() {
-			return "" + getNombre() + "- Tamaño : " + getTamano();
+			return "" + getNombreP() ;
 		}
 		
 	
@@ -271,8 +175,8 @@ public class RegistroRelacionPCFX {
 	
 	class InsumoCBX extends model.Insumo {
 
-		public InsumoCBX(int codigoProducto, String nombre, String descripción) {
-			super(codigoProducto, nombre, descripción);
+		public InsumoCBX(int codigoProducto, String nombre, String descripción,int cantidad) {
+			super(codigoProducto, nombre, descripción,cantidad);
 			// TODO Auto-generated constructor stub
 		}
 
@@ -283,58 +187,45 @@ public class RegistroRelacionPCFX {
 	}
 
 	
-
 	
-
-	
-/*
-	@FXML
-	private void btnCancelarCliente_Action() {
-		cleanScreenCliente();
-	}
-
-	private void cleanScreenCliente() {
-		txtNITCliente.setText("");
-		txtNombreCliente.setText("");
-	}*/
 
 	
 	@FXML
-	private void btnBuscarProducto_Action() {
+	private void btnBuscarP_Action() {
 		String codigo = null;
 		
 		
-		if (cbxNombreProducto.getValue() != null) {
+		if (cbxNombreP.getValue() != null) {
 			
 			
-			codigo = buscarProducto(cbxNombreProducto.getValue().getNombre(),cbxNombreProducto.getValue().getTamano());
+			codigo = buscarProveedor(cbxNombreP.getValue().getNombreP(),cbxNombreP.getValue().getTelefono());
 			if (codigo != null) {
-				txtCodigoProducto.setText(codigo);
-				txtCodProducto.setText(codigo);
+				txtCodigoP.setText(codigo);
+				txtCodProv.setText(codigo);
 			} else {
 				MessageBox messageBox = new MessageBox();
-				messageBox.message("Información", "El producto no se encuentra registrado");
+				messageBox.message("Información", "El proveedor no se encuentra registrado");
 			}
 
 		} else {
 			MessageBox messageBox = new MessageBox();
-			messageBox.message("NIT", "El Campo de nombre Producto no puede estar vacio");
+			messageBox.message("NIT", "El Campo de nombre Proveedor no puede estar vacio");
 		}
 	}
 	
 	
 	@FXML
-	private void btnBuscarInsumo_Action() {
+	private void btnBuscarI_Action() {
 		String codigo = null;
 		
 		
-		if (cbxNombreInsumo.getValue() != null) {
+		if (cbxNombreI.getValue() != null) {
 			
 			System.out.println("entro en aqi1");
-			codigo = buscarInsumo(cbxNombreInsumo.getValue().getNombre());
+			codigo = buscarInsumo(cbxNombreI.getValue().getNombre());
 			System.out.println(codigo);
 			if (codigo != null) {
-				txtCodigoInsumo.setText(codigo);
+				txtCodigoI.setText(codigo);
 				txtCodInsumo.setText(codigo);
 			} else {
 				MessageBox messageBox = new MessageBox();
@@ -349,17 +240,17 @@ public class RegistroRelacionPCFX {
 	
 	
 	
-	private String buscarProducto (String nombre, String tamano) {
+	private String buscarProveedor (String nombre, String telefono) {
 		  //= null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String codigo=null;
 
 		try {
-			preparedStatement = connection.query("select producto.codProducto from producto " + " where producto.Nombre = ? " + 
-					" and producto.Tamano = ? ");
+			preparedStatement = connection.query("select proveedor.NITProveedor from proveedor " + " where proveedor.NombreP = ? " + 
+					" and proveedor.Telefono = ? ");
 			preparedStatement.setString(1, nombre);
-			preparedStatement.setString(2, tamano);
+			preparedStatement.setString(2, telefono);
 			//preparedStatement.setString(3, precio);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -370,7 +261,7 @@ public class RegistroRelacionPCFX {
 			
 		} catch (SQLException e) {
 			MessageBox messageBox = new MessageBox();
-			messageBox.message("Error Producto", e.getMessage());
+			messageBox.message("Error Proveedor", e.getMessage());
 		}
 		return codigo;
 	}
@@ -400,23 +291,24 @@ public class RegistroRelacionPCFX {
 		return codigo;
 	}
 	@FXML
-	private void btnRegistrarRR_Action() {
+	private void btnRegistrar_Action() {
 		PreparedStatement preparedStatement = null;
-		if (!txtCodProducto.getText().isEmpty() && !txtCodInsumo.getText().isEmpty() && !txtCantidad.getText().isEmpty()) {
+		if (!txtCodProv.getText().isEmpty() && !txtCodInsumo.getText().isEmpty() && !txtPrecio.getText().isEmpty()) {
 			boolean registrado =  false;
-			registrado=registrado( txtCodInsumo.getText(), txtCodProducto.getText());
+			registrado=registrado( txtCodInsumo.getText(), txtCodProv.getText());
 			
 			if(!registrado) {
 			try {
-				preparedStatement = connection.query("insert into receta(codInsumo, codProducto , cantidad) values(?,?,?)");
-				//System.out.println(txtCodInsumo.getText());
+				preparedStatement = connection.query("insert into relacion(codInsumo, NITProveedor , precio) values(?,?,?)");
+			
 				preparedStatement.setString(1, txtCodInsumo.getText());
-				preparedStatement.setString(2, txtCodProducto.getText());
-				preparedStatement.setString(3, txtCantidad.getText());
+				preparedStatement.setString(2, txtCodProv.getText());
+				preparedStatement.setString(3, txtPrecio.getText());
 				preparedStatement.executeUpdate();
-				txtCodProducto.setText(txtCodigoProducto.getText());
-				txtCodInsumo.setText(txtCodigoInsumo.getText());
-				tbpPanel.getSelectionModel().select(tabReceta);   ///decia tabVneta
+				txtCodProv.setText(txtCodigoP.getText());
+				txtCodInsumo.setText(txtCodigoI.getText());
+				tbpPanel.getSelectionModel().select(tabRelacion);   ///decia tabVneta
+				cleanScreen();
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());
@@ -425,7 +317,7 @@ public class RegistroRelacionPCFX {
 			
 			else {
 				MessageBox messageBox = new MessageBox();
-				messageBox.message("Error en Consulta", "receta ya registrada anteriormente");	
+				messageBox.message("Error en Consulta", "relacion ya registrada anteriormente");	
 			}
 			
 			
@@ -445,16 +337,16 @@ public class RegistroRelacionPCFX {
 		
 	}
 	
-	private boolean registrado(String codigoInsumo, String codigoProducto) {
+	private boolean registrado(String codigoInsumo, String codigoProv) {
 		  //= null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		boolean registrado=false;
 
 		try {
-			preparedStatement = connection.query("select * from receta " + "where receta.codInsumo like ?  && receta.codProducto like ? ");
+			preparedStatement = connection.query("select * from relacion " + "where relacion.codInsumo like ?  && relacion.NITProveedor like ? ");
 			preparedStatement.setString(1, codigoInsumo);
-			preparedStatement.setString(2, codigoProducto);
+			preparedStatement.setString(2, codigoProv);
 		
 			resultSet = preparedStatement.executeQuery();
 			
@@ -473,24 +365,24 @@ public class RegistroRelacionPCFX {
 	}
 	
 	@FXML
-	private void btnActualizarReceta_Action() {
+	private void btnActualizarRelacion_Action() {
 		PreparedStatement preparedStatement = null;
-		if (!txtCodigoProducto.getText().isEmpty() && !txtCodigoInsumo.getText().isEmpty()) {
+		if (!txtCodigoP.getText().isEmpty() && !txtCodigoI.getText().isEmpty()) {
 			try {
-				preparedStatement = connection.query("update receta set cantidad = ? where codInsumo = ? && codProducto = ?");
-				preparedStatement.setString(1, txtCantidad.getText());
+				preparedStatement = connection.query("update receta set precio = ? where codInsumo = ? && codProducto = ?");
+				preparedStatement.setString(1, txtPrecio.getText());
 				preparedStatement.setString(2, txtCodInsumo.getText());
-				preparedStatement.setString(3, txtCodProducto.getText());
+				preparedStatement.setString(3, txtCodProv.getText());
 				preparedStatement.executeUpdate();
 				MessageBox messageBox = new MessageBox();
-				messageBox.message("Información", "Receta actualizada con éxito");
+				messageBox.message("Información", "Relacion actualizada con éxito");
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());
 			}
 		} else {
 			MessageBox messageBox = new MessageBox();
-			messageBox.message("Error en Receta", "Debe llenar ambos campos");
+			messageBox.message("Error en Relacion", "Debe llenar ambos campos");
 		}
 	}
 

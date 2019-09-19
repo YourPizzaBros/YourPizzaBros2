@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="491.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.comprarInsumosFX">
+   <children>
+      <Label layoutX="242.0" layoutY="22.0" text="Comprar">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dtpFecha" layoutX="158.0" layoutY="98.0" />
+      <Label layoutX="78.0" layoutY="103.0" text="Fecha:" />
+      <Label layoutX="77.0" layoutY="156.0" text="Insumo:" />
+      <Label layoutX="58.0" layoutY="202.0" text="Proveedor:" />
+      <Label layoutX="72.0" layoutY="251.0" text="Cantidad:" />
+      <TextField fx:id="txtCantidad" layoutX="161.0" layoutY="246.0" prefHeight="25.0" prefWidth="44.0" />
+      <ComboBox fx:id="cbxInsumo" layoutX="161.0" layoutY="151.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbxProveedor" layoutX="161.0" layoutY="197.0" prefWidth="150.0" />
+      <TableView fx:id="tbvDetalle" layoutX="501.0" layoutY="51.0" prefHeight="240.0" prefWidth="251.0">
+        <columns>
+          <TableColumn fx:id="tbcInsumo" prefWidth="134.0" text="Insumo" />
+          <TableColumn fx:id="tbcCantidad" prefWidth="66.0" text="Cantidad" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAñadirInsumo" layoutX="103.0" layoutY="321.0" mnemonicParsing="false" onAction="#btnAñadirInsumo_Action" text="Añadir Insumo" />
+      <Button fx:id="btnEditarInsumo" layoutX="242.0" layoutY="321.0" mnemonicParsing="false" onAction="#btnEditarInsumo_Action" text="Editar Insumo" />
+      <Button fx:id="btnRemoverInsumo" layoutX="376.0" layoutY="321.0" mnemonicParsing="false" onAction="#btnRemoverInsumo_Action" text="Remover Insumo" />
+      <Button fx:id="btnComprar" layoutX="160.0" layoutY="388.0" mnemonicParsing="false" onAction="#btnComprar_Action" text="Comprar " />
+      <Button fx:id="btnCancelarCompra" layoutX="323.0" layoutY="388.0" mnemonicParsing="false" onAction="#btnCancelarCompra_Action" text="Cancelar Compra" />
+   </children>
+</AnchorPane>
