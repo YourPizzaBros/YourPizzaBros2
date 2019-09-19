@@ -63,13 +63,6 @@ public class RegistroRelacionPCFX {
 	
 	
 	
-	/*@FXML
-	private TableView<DetalleTBV> tbvDetalle;
-	@FXML
-	private TableColumn<DetalleTBV, String> tbcProducto;
-	@FXML
-	private TableColumn<DetalleTBV, String> tbcCantidad;
-	*/
 	
 	
 	
@@ -126,7 +119,7 @@ public class RegistroRelacionPCFX {
 
 			
 			while (resultSet.next()) {
-				insumoCBX = new InsumoCBX(resultSet.getInt("codInsumo"), resultSet.getString("nombre"), resultSet.getString("descripcion"));
+				insumoCBX = new InsumoCBX(resultSet.getInt("codInsumo"), resultSet.getString("nombre"), resultSet.getString("descripcion"),resultSet.getInt("cantidad"));
 				cbxNombreI.getItems().add(insumoCBX);
 			}
 
@@ -137,15 +130,12 @@ public class RegistroRelacionPCFX {
 	}
 
 
-	/*public void now() {
-
-		dtpFecha.setValue(LocalDate.now());
-	}*/
-
 	private void cleanScreen() {
 		//now();
-		txtCodProv.setText("");
-		txtCodInsumo.setText("");
+		txtCodProv.setText(" ");
+		txtCodInsumo.setText(" ");
+		txtCodigoP.setText(" ");
+		txtCodigoI.setText(" ");
 		
 	}
 
@@ -173,8 +163,8 @@ public class RegistroRelacionPCFX {
 	
 	class InsumoCBX extends model.Insumo {
 
-		public InsumoCBX(int codigoProducto, String nombre, String descripción) {
-			super(codigoProducto, nombre, descripción);
+		public InsumoCBX(int codigoProducto, String nombre, String descripción,int cantidad) {
+			super(codigoProducto, nombre, descripción,cantidad);
 			// TODO Auto-generated constructor stub
 		}
 
@@ -185,20 +175,7 @@ public class RegistroRelacionPCFX {
 	}
 
 	
-
 	
-
-	
-/*
-	@FXML
-	private void btnCancelarCliente_Action() {
-		cleanScreenCliente();
-	}
-
-	private void cleanScreenCliente() {
-		txtNITCliente.setText("");
-		txtNombreCliente.setText("");
-	}*/
 
 	
 	@FXML
@@ -319,6 +296,7 @@ public class RegistroRelacionPCFX {
 				txtCodProv.setText(txtCodigoP.getText());
 				txtCodInsumo.setText(txtCodigoI.getText());
 				tbpPanel.getSelectionModel().select(tabRelacion);   ///decia tabVneta
+				cleanScreen();
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());

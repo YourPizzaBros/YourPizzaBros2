@@ -53,11 +53,12 @@ public class AdmiFX {
 	@FXML
 	private void btnComprarInsumos_Action() 
 	{
-/*		FormsOperations formsOperations = new FormsOperations();
+	  FormsOperations formsOperations = new FormsOperations();
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Comprar Insumo" , "/view/CompraFX.fxml");
-		CompraFX compraFX = fXMLLoader.getController();
+		ComprarInsumosFX compraFX = fXMLLoader.getController();
 		compraFX.setConnection(connection);
-		*/
+		compraFX.loadcbxInsumo();
+		
 	}
 	@FXML
 	private void btnRegistrarProveedor_Action() 
