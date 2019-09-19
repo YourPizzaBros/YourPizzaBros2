@@ -85,7 +85,7 @@ public class ComprarInsumosFX {
 	
 	@FXML
 	private void btnCargarP_Action() {
-		cbxProveedor.setValue(null);
+		
 		
 		if(cbxInsumo.getValue() != null) {
 			
@@ -93,24 +93,10 @@ public class ComprarInsumosFX {
 			PreparedStatement preparedStatement = null;
 			ResultSet resultset = null;
 			
-			/*try {
-				preparedStatement = connection.query("select Relacion.NITProveedor from Relacion "
-						+ "  where Relacion.codInsumo = ? " );
-				
-				preparedStatement.setInt(1, cbxInsumo.getValue().getCodigoInsumo());
-	            resultset =preparedStatement.executeQuery();
-				
-	        //	cbxInsumo.getValue().getCodigoInsumo();
-				
-				
-				
-			} catch (SQLException e) {
-				MessageBox messageBox = new MessageBox();
-				messageBox.message("Error en Consulta Registrado", e.getMessage());
-				
-			}*/   //creo que no es necesario esto joojo
+			cbxProveedor.getItems().clear();
 			
 			this.loadcbxProveedor();
+			
 			
 		}
 		
