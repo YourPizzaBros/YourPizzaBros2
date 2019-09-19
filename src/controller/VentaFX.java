@@ -18,7 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.LocalDate;
 import java.util.Date;
 
-import controller.RegistroResetaFX.ProductoCBX;
+
 
 public class VentaFX {
 	private Connection connection;

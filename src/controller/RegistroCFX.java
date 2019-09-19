@@ -71,12 +71,7 @@ public class RegistroCFX {
 				preparedStatement.setString(1, txtNITCliente.getText());
 				preparedStatement.setString(2, txtNombreCliente.getText());
 				preparedStatement.executeUpdate();
-<<<<<<< HEAD
-			
-				
-=======
-		
->>>>>>> Andy
+
 			} catch (SQLException e) {
 				MessageBox messageBox = new MessageBox();
 				messageBox.message("Error en Consulta", e.getMessage());
@@ -181,12 +176,7 @@ public class RegistroCFX {
 		}
 		return apellido;
 	}
-<<<<<<< HEAD
 
-=======
-	 
-	
-	
 
 	@FXML
 	private void btnContinuar_Action() {
@@ -211,7 +201,7 @@ public class RegistroCFX {
 			ElegirFX ElegirFX = fXMLLoader.getController();
 			ElegirFX.setConnection(connection);
 		
-			ElegirFX.setclienteNIT(txtNITCliente.getText());
+			ElegirFX.setClienteNIT(txtNITCliente.getText());
 			
 			
 			
@@ -226,11 +216,37 @@ public class RegistroCFX {
 		}
 		
 				
->>>>>>> Andy
+
 
 	
 	}
+	private boolean registrado() {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultset = null;
+		boolean registrado= false;
+		
+			try {
+				preparedStatement = connection.query("select cliente.apellidoC from cliente "
+						+ "  where cliente.nit = ?" );
+				preparedStatement.setString(1, txtNITCliente.getText());
+			//	preparedStatement.setString(2, txtNombreCliente.getText());
+			 resultset =preparedStatement.executeQuery();
+				
+				if ( resultset.next()) {
+					registrado=true;
+					
+				}
+				
+		   
+			} catch (SQLException e) {
+				MessageBox messageBox = new MessageBox();
+				messageBox.message("Error en Consulta Registrado", e.getMessage());
+				
+			}
+		
+		return registrado;
+	}
 
 
-
+}
 

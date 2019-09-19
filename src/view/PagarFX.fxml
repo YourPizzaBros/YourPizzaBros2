@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PagarFX">
    <children>
-      <Button fx:id="btnPagar" layoutX="244.0" layoutY="319.0" mnemonicParsing="false" text="Pagar" textFill="#090d08">
+      <Button fx:id="btnPagar" layoutX="352.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnPagar_Action" text="Pagar" textFill="#090d08">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
+      <Button fx:id="btnCargarPedidos" layoutX="128.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnCargarPedidos_Action" text="Cargar Pedidos" textFill="#090d08">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tablePagar" layoutX="51.0" layoutY="35.0" prefHeight="200.0" prefWidth="486.0">
+        <columns>
+          <TableColumn fx:id="colNIT" prefWidth="58.0" text="NIT" />
+          <TableColumn fx:id="colProducto" prefWidth="71.0" text="Producto" />
+            <TableColumn fx:id="colCantidad" prefWidth="126.0" text="Cantidad" />
+            <TableColumn fx:id="colPrecio" prefWidth="110.0" text="Precio" />
+            <TableColumn fx:id="colTotProd" prefWidth="120.0" text="Total Producto" />
+        </columns>
+      </TableView>
+      <Label fx:id="lblTotal" layoutX="229.0" layoutY="248.0" prefHeight="39.0" prefWidth="123.0" text="Total : " />
    </children>
 </AnchorPane>

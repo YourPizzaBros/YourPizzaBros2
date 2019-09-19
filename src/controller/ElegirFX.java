@@ -25,13 +25,14 @@ public class ElegirFX {
 	private void initialize() {
 		
 	}
-	public void setclienteNIT(String nit) {
-		
-		this.clienteNIT=nit;
-		
+	
+	
+	public String getClienteNIT() {
+		return clienteNIT;
 	}
-	
-	
+	public void setClienteNIT(String string) {
+		this.clienteNIT = string;
+	}
 	public Connection getConnection() {
 		return connection;
 	}
@@ -48,7 +49,7 @@ public class ElegirFX {
 		
 		System.out.println("apreto boton pedido");
 		FormsOperations formsOperations = new FormsOperations();
-		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Formulario Venta" , "/view/VentaFX.fxml");
+		FXMLLoader fXMLLoader = formsOperations.OpenFormTab ("Formulario Venta" , "/view/VentaFX.fxml");
 		System.out.println("entro a ventea");
 		VentaFX ventaFX = fXMLLoader.getController();
 		System.out.println("todo ok");
@@ -70,8 +71,9 @@ public class ElegirFX {
 		FXMLLoader fXMLLoader = formsOperations.OpenForm ("Formulario Pagar" , "/view/PagarFX.fxml");
 		PagarFX pagarFX = fXMLLoader.getController();
 		pagarFX.setConnection(connection);
-		
+		pagarFX.setClienteNIT(clienteNIT);
 		 //aqui tiene que venir con pagar
 	}
+
 	
 }
