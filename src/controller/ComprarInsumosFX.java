@@ -66,7 +66,7 @@ public class ComprarInsumosFX {
 				
 				
 					guardarDetalleCompra(   getIdRelacion(), convertToDate(dtpFecha.getValue()),   txtCantidad.getText());
-							
+					cleanScreen(); 	
 				}
 		
 		else {
@@ -275,14 +275,17 @@ class ProveedorCBX extends model.Proveedor {
 private void cleanScreen() {
 	now();
 
-	//cbxInsumo.setValue(null);
-	//cbxProveedor.setValue(null);
+	cbxInsumo.setValue(null);
+	cbxProveedor.setValue(null);
 	txtCantidad.setText("");
 
 }
 public void now() {
 
 	dtpFecha.setValue(LocalDate.now());
+	
+	
+	
 }
 
 private java.util.Date convertToDate(LocalDate localDate) {
