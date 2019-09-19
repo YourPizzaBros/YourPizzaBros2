@@ -162,7 +162,7 @@ public class VentaFX {
 		boolean registrado= false;
 		
 			try {
-				preparedStatement = connection.query("select .apellidoC from cliente "
+				preparedStatement = connection.query("select cliente.apellidoC from cliente "
 						+ "  where cliente.nit = ?" );
 				preparedStatement.setString(1, txtNIT.getText());
 		

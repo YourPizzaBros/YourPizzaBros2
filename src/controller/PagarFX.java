@@ -65,6 +65,7 @@ public class PagarFX {
 	@FXML
 	private void initialize() {
 		
+		
 		// System.out.println(new PropertyValueFactory<>("nombre"));
 		colNIT.setCellValueFactory(new PropertyValueFactory<Pago, String>("INT"));
 		colProducto.setCellValueFactory(new PropertyValueFactory<Pago, String>("producto"));
@@ -132,12 +133,23 @@ public class PagarFX {
 
 	}
 
+
 	@FXML
 	private void btnCargarPedidos_Action() {
 
 		try {
 
 			final ObservableList<Pago> data = FXCollections.observableArrayList();
+			
+			/*
+			 * PreparedStatement preparedStatement = connection .query("select " +
+			 * "venta.Estado,\r\n" + "cliente.nit\r\n" + "from cliente inner join venta\r\n"
+			 * + "on cliente.nit = venta.NIT\r\n" +
+			 * "where cliente.nit= ? and venta.Estado = 'SinPagar' ");
+			 * 
+			 */
+			
+			
 			PreparedStatement preparedStatement = connection
 					.query("select cliente.nit as NIT, producto.Nombre as Producto, producto.Precio as PrecioUni,\r\n" + 
 							"detalleventa.Cantidad as Cantidad, venta.Estado as Estado,\r\n" + 
@@ -183,10 +195,6 @@ public class PagarFX {
 		
 
 	}
-
-	
-	
-	
 	
 	
 	

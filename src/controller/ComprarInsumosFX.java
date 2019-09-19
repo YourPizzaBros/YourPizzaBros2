@@ -101,7 +101,7 @@ public class ComprarInsumosFX {
 	
 	public void loadcbxInsumo() {
 		try {
-			cbxProveedor.getItems().removeAll();
+			//cbxProveedor.getItems().removeAll();
 			PreparedStatement preparedStatement = connection.query("Select * from insumo");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			InsumoCBX insumoCBX = null;
