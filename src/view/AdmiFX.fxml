@@ -61,5 +61,10 @@
             <Font size="25.0" />
          </font>
       </Button>
+      <Button fx:id="btnRegistrarRelacion" layoutX="312.0" layoutY="273.0" mnemonicParsing="false" onAction="#btnRegistrarRelacion_Action" text="Registrar Relacion">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -3,8 +3,6 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import controller.RegistroRelacionPCFX.InsumoCBX;
-import controller.RegistroRelacionPCFX.ProveedorCBX;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -156,6 +154,7 @@ public class RegistroRelacionPCFX {
 		txtCodInsumo.setText(" ");
 		txtCodigoP.setText(" ");
 		txtCodigoI.setText(" ");
+		txtPrecio.setText(" ");
 		
 	}
 
